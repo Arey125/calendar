@@ -1,0 +1,89 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "settings": {
+    "import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true
+      }
+    }
+  },
+  "extends": [
+    "airbnb",
+    "airbnb-typescript",
+    "airbnb/hooks",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "prettier",
+    "@feature-sliced"
+  ],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "plugins": ["prettier", "@feature-sliced/eslint-plugin-messages"],
+  "processor": "@feature-sliced/messages/fs",
+  "overrides": [
+    {
+      "files": [
+        "**/*.stories.tsx",
+        "./webpack/**",
+        "**/jest-*/**",
+        "**/*.mock.ts",
+        "**/storybook/**/*.tsx"
+      ],
+      "rules": {
+        "import/no-extraneous-dependencies": "off"
+      }
+    }
+  ],
+  "rules": {
+    "prettier/prettier": ["error", { "endOfLine": "auto" }],
+    "no-console": ["error", { "allow": ["error"] }],
+    "react/react-in-jsx-scope": "off",
+    "no-void": ["error", {
+      "allowAsStatement": true
+    }],
+    "react/function-component-definition": [
+      2,
+      {
+        "namedComponents": "arrow-function",
+        "unnamedComponents": "arrow-function"
+      }
+    ],
+    "import/prefer-default-export": "off",
+    "@typescript-eslint/lines-between-class-members": [
+      "error",
+      "always",
+      { "exceptAfterSingleLine": true }
+    ],
+    "react/require-default-props": [0],
+    "object-curly-newline": "off",
+    "react/jsx-props-no-spreading": [0],
+    "implicit-arrow-linebreak": 0,
+    "operator-linebreak": "off",
+    "@typescript-eslint/indent": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "jsx-a11y/label-has-associated-control": "off",
+    "react/no-array-index-key": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        "selector": "variable",
+        "modifiers": ["const"],
+        "format": ["UPPER_CASE", "camelCase", "snake_case", "PascalCase"]
+      }
+    ],
+    "curly": ["error", "all"],
+    "no-param-reassign": [
+      "error",
+      { "props": true, "ignorePropertyModificationsFor": ["state", "acc"] }
+    ],
+    "import/no-internal-modules": [ "error", {
+      "allow": [
+        "entities/**", "features/**", "shared/*", "shared/lib/*", "pages/*", "widgets/*", 
+        "**/*.json", "**/*.svg", "**/*.png",
+        "@mui/**", "date-fns/**", "@reduxjs/**", "antd/**", "@visx/**", "@fontsource/**", "highcharts/**", "rc-tree/**"
+      ]
+    } ]
+  }
+}

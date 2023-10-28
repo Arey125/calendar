@@ -1,0 +1,5 @@
+webpack.config.js
+/dist
+/webpack/*
+server.js
+*.generated.ts

@@ -1,0 +1,26 @@
+{
+  "printWidth": 100,
+  "tabWidth": 2,
+  "quoteProps": "as-needed",
+  "useTabs": false,
+  "singleQuote": true,
+  "bracketSpacing": true,
+  "semi": true,
+  "trailingComma": "all",
+  "arrowParens": "always",
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true,
+  "importOrder": [
+    "<THIRD_PARTY_MODULES>",
+    "(^app/(.*)$|app)",
+    "^processes/(.*)$",
+    "^pages/(.*)$",
+    "^widgets/(.*)$",
+    "^features/(.*)$",
+    "^entities/(.*)$",
+    "^shared/(.*)$",
+    "^[./]",
+    "^[../]",
+    "^[../../]"
+  ]
+}
