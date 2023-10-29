@@ -27,11 +27,30 @@ const FullCalendarBox = styled(Box)(({ theme }) => ({
 export const App = () => {
   const ref = useRef<FullCalendar>(null);
 
-  const [currentDate, setCurrentDate] = useState<string | null>('');
+  const [currentDate, setCurrentDate] = useState<string | null>(null);
+  const localeDate = useMemo(() => {
+    if (!currentDate) {
+      return null;
+    }
+    return new Date(Date.parse(currentDate)).toLocaleDateString('ru', {
+      day: 'numeric',
+      month: 'numeric',
+      year: 'numeric',
+    });
+  }, [currentDate]);
+
+  const shortDate = useMemo(() => {
+    if (!currentDate) {
+      return null;
+    }
+    return new Date(Date.parse(currentDate)).toLocaleDateString('ru', {
+      day: 'numeric',
+      month: 'long',
+    });
+  }, [currentDate]);
 
   const setDate = (dateStr: string) => {
-    const formattedDate = new Date(dateStr).toLocaleString('ru').split(',')[0];
-    setCurrentDate(formattedDate);
+    setCurrentDate(dateStr);
   };
 
   useLayoutEffect(() => {
@@ -43,17 +62,17 @@ export const App = () => {
   }, []);
 
   const currentHolydays = useMemo(
-    () => HOLYDAYS.filter((item) => item.date === currentDate),
-    [currentDate],
+    () => HOLYDAYS.filter((item) => item.date === localeDate),
+    [localeDate],
   );
 
   const currentNames = useMemo(() => {
-    const item = NAMES.find(({ date }) => date === currentDate);
+    const item = NAMES.find(({ date }) => date === localeDate);
     if (!item) {
       return [];
     }
     return item.names.split(', ');
-  }, [currentDate]);
+  }, [localeDate]);
 
   return (
     <ThemeProvider theme={appTheme}>
@@ -79,7 +98,7 @@ export const App = () => {
           />
         </FullCalendarBox>
         <Stack paddingTop={8} p={2} width="30vw" height="calc(100vh - 100px)" overflow="auto">
-          <Events items={currentHolydays} />
+          <Events items={currentHolydays} shortDate={shortDate as string} />
           <Names items={currentNames} />
         </Stack>
       </Stack>

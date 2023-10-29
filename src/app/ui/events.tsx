@@ -25,9 +25,10 @@ const BOX_STYLE = {
 
 type TProps = {
   items: Item[];
+  shortDate: string;
 };
 
-export const Events = ({ items }: TProps) => {
+export const Events = ({ items, shortDate }: TProps) => {
   const [currentEvent, setCurrentEvent] = useState<Item | null>(null);
   const open = Boolean(currentEvent);
   const close = useCallback(() => setCurrentEvent(null), []);
@@ -48,9 +49,14 @@ export const Events = ({ items }: TProps) => {
           </Stack>
           <Box pb={2} px={2} maxHeight="80vh" overflow="auto">
             <Stack direction="row" justifyContent="space-between" alignItems="center" px={2}>
-              <Typography id="modal-modal-title" variant="h4" component="h2">
-                {currentEvent?.title}
-              </Typography>
+              <Stack>
+                <Typography id="modal-modal-title" variant="h4" component="h2">
+                  {currentEvent?.title}
+                </Typography>
+                <Typography id="modal-modal-title" variant="h5" component="h2">
+                  {shortDate}
+                </Typography>
+              </Stack>
               <CardMedia
                 component="img"
                 image={currentEvent?.image}
@@ -58,7 +64,7 @@ export const Events = ({ items }: TProps) => {
                 sx={{ width: '200px', borderRadius: 2 }}
               />
             </Stack>
-            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            <Typography id="modal-modal-description" sx={{ mt: 2, px: 2 }}>
               {currentEvent?.description.split('\n').map((item) => (
                 <p>{item}</p>
               ))}
