@@ -56,8 +56,11 @@ export const App = () => {
   useLayoutEffect(() => {
     const calendarApi = ref.current?.getApi();
     if (calendarApi) {
-      calendarApi.gotoDate('2024-01-01');
-      setDate('2024-01-01');
+      const today = Date.now();
+      if (today < Date.parse('2024-01-01')) {
+        calendarApi.gotoDate('2024-01-01');
+        setDate('2024-01-01');
+      }
     }
   }, []);
 
