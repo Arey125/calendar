@@ -1,7 +1,5 @@
-import { Box, Card, Modal, Stack, Typography, IconButton } from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
-import { CardMedia } from '@mui/material';
-
+import { Close as CloseIcon } from '@mui/icons-material';
+import { Box, Card, Modal, Stack, Typography, IconButton, CardMedia } from '@mui/material';
 import { useCallback, useState } from 'react';
 
 type Item = {
