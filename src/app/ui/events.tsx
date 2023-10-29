@@ -59,7 +59,9 @@ export const Events = ({ items }: TProps) => {
               />
             </Stack>
             <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-              {currentEvent?.description}
+              {currentEvent?.description.split('\n').map((item) => (
+                <p>{item}</p>
+              ))}
             </Typography>
           </Box>
         </Box>
