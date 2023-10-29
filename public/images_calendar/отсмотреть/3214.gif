@@ -1,0 +1,293 @@
+<!DOCTYPE HTML><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"><meta name="apple-itunes-app" content="app-id=403699635, affiliate-data=at=10lsL7&ct=calend_tag"><meta name="description" content=""/><meta property="og:description" content=""/><meta property="og:image" content="https://www.calend.ru/images/logo_square.png"/><meta property="og:url" content="https://www.calend.ru/404/?fb"/><meta property="og:title" content=""/><meta property="og:type" content="website"/><meta property="og:site_name" content="Calend.ru"/><meta property="fb:app_id" content="1297918300308542" /><meta property="og:locale" content="ru_RU"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="robots" content="noindex,follow"><link rel="amphtml" href="https://amp.calend.ru/404/"><link rel="canonical" href="https://www.calend.ru/404/"/><title></title><link rel="SHORTCUT ICON" href="https://www.calend.ru/img/site2/favicon.ico"/><link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&amp;subset=cyrillic" rel="stylesheet"><link rel="stylesheet" href="/css/flag-icon.min.css" type="text/css"/><link rel="stylesheet" href="/css/font-awesome.min.css"/><link rel="stylesheet" href="/css/pickmeup.css" type="text/css"/><link rel="stylesheet" href="/css/main.css?7" type="text/css"/><link rel="stylesheet" href="/css/responsive.css?5" type="text/css"/><link rel="stylesheet" media="print" href="/css/print.css" type="text/css"/><script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script><script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.4.1.min.js"></script><script type="text/javascript" src="/js/pickmeup.js"></script><script type="text/javascript" src="/js/custom.js?3"></script><script type="text/javascript" src="/js/build_blocks.js"></script><script type="text/javascript" src="//an.yandex.ru/system/context.js"></script><script src="https://yastatic.net/pcode/adfox/loader.js" crossorigin="anonymous"></script><script src="/js/social-likes.min.js"></script><script async type="text/javascript" src="//s.luxupcdnc.com/t/common_402.js"></script> <script type="text/javascript">
+      addEventListener('DOMContentLoaded', function () {
+          pickmeup('#calendar', {
+              flat: true,
+              select_year: false,
+              locale: 'ru',
+              //min: ,
+              //max: ,
+
+                        });
+          if(document.getElementById("calendar")){
+              document.getElementById("calendar").addEventListener("pickmeup-change", function (e) {
+                  var date = e.detail.date;
+                  var module = "";
+                  if (module == "") module = "day";
+                  var path = "";
+                  if (module == "moon") {
+                      path = "/" + module + "/" + date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + "/";
+                  } else {
+                      path = "/" + module + "/" + (date.getMonth() + 1) + "-" + date.getDate() + "/";
+                  }
+                  window.location = path;
+              });
+          }
+      });
+      function checkuri() {
+          var a = document.location.toString().split('#');
+          var h = a[1];
+          if (h && h.indexOf('script') > 1) {
+              window.location = a[0];
+          }
+      }
+
+      window._taboola = window._taboola || [];
+      _taboola.push({article:'auto'});
+      !function (e, f, u, i) {
+          if (!document.getElementById(i)){
+              e.async = 1;
+              e.src = u;
+              e.id = i;
+              f.parentNode.insertBefore(e, f);
+          }
+      }(document.createElement('script'),
+          document.getElementsByTagName('script')[0],
+          '//cdn.taboola.com/libtrc/mediopro-calend/loader.js',
+          'tb_loader_script');
+      if(window.performance && typeof window.performance.mark == 'function')
+      {window.performance.mark('tbl_ic');}
+      
+  </script> <script type="text/javascript" src="/js/lang/ru.js"></script><script type="text/javascript" src="/js/only/unauth.js?v=2"></script><LINK title="Праздники" href="https://www.calend.ru/img/export/today-holidays.rss" type=application/rss+xmlrel=alternate><LINK title="Именины" href="https://www.calend.ru/img/export/today-names.rss" type=application/rss+xml rel=alternate><LINK title="Хроника" href="https://www.calend.ru/img/export/today-events.rss" type=application/rss+xmlrel=alternate><LINK title="Дни городов" href="https://www.calend.ru/img/export/today-citydays.rss" type=application/rss+xmlrel=alternate> <script type="text/javascript">
+
+       var _gaq = _gaq || [];
+       _gaq.push(['_setAccount', 'UA-3223189-1']);
+       _gaq.push(['_trackPageview']);
+
+       (function () {
+         var ga = document.createElement('script');
+         ga.type = 'text/javascript';
+         ga.async = true;
+         ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+         var s = document.getElementsByTagName('script')[0];
+         s.parentNode.insertBefore(ga, s);
+       })();
+     </script> <script src='https://www.google.com/recaptcha/api.js'></script> <meta name="pmail-verification" content="8406b35afbb887912a0b1dacbf497eff"> <script data-ad-client="ca-pub-6466306714161285" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> <!-- Yandex.RTB --> <script>window.yaContextCb=window.yaContextCb||[]</script> <script src="https://yandex.ru/ads/system/context.js" async></script> <script async type="text/javascript" src="//s.luxcdn.com/t/218553/360_light.js"></script> <script async  src="https://relap.io/v7/relap.js" data-relap-token="4JjgLKUhd_MOY8jN"></script> </head> <body onload="checkuri();" > <div id="after_body_sticky"></div> <div class="bottomFixedBlock"> <div id="overlay" height="100"></div> <script>
+var overlay_closed = false;
+$(document).ready(function () {
+
+$(".bottomFixedBlock").show();
+
+ $(window).scroll(function () {
+  if ($(this).scrollTop() >= 0) {
+   if(!overlay_closed){
+    $(".bottomFixedBlock").show();
+   }
+  } else {
+   $(".bottomFixedBlock").hide();
+  }
+ });
+
+$(".bottomFixedBlockClose").click(function () {
+ $(".bottomFixedBlock").hide();
+ $(".gotop").css('bottom', '20px');
+ overlay_closed = true;
+ event.stopPropagation();
+ return false;
+});
+
+});
+</script> <style>
+.bottomFixedBlock {
+    position: fixed;
+    width: 100%;
+    height: 100px;
+    background: #fff;
+    bottom: 0;
+    left: 0;
+    z-index: 9999;
+    -webkit-box-shadow: 0 0 24px 0 rgb(0 0 0 / 30%);
+    box-shadow: 0 0 24px 0 rgb(0 0 0 / 30%);
+}
+
+.bottomFixedBlock .bottomFixedBlockClose {
+    position: absolute;
+    right: 6px;
+    top: -30px;
+    background: none!important;
+    z-index: 10000;
+    padding: 2px 2px 0;
+}
+
+.gotop {
+    bottom: 130px;
+    right: 0;
+}
+
+.footer {
+margin-bottom: 100px!important;
+}
+
+.bottomFixedBlockContainer {
+max-width: 1440px;
+margin: 0 auto;
+}
+</style> <div class="bottomFixedBlockContainer"> <div id="adfox_164476157341573392"></div> <script>
+    window.yaContextCb.push(()=>{
+        Ya.adfoxCode.create({
+            ownerId: 1152,
+            containerId: 'adfox_164476157341573392',
+            params: {
+                pp: 'brik',
+                ps: 'utn',
+                p2: 'eoht',
+                puid1: '',
+                puid2: '',
+                puid3: '',
+                puid4: '',
+                puid5: '',
+                puid6: '',
+                puid7: ''
+            }
+        })
+    })
+</script> </div> <div class="bottomFixedBlockClose"><a href="#"><img src="/images/close.png" width="22" height="22" /></a></div></div> <script type="text/javascript">
+     window.vkAsyncInit = function () {
+       VK.init({
+         apiId: 2153155
+       });
+     };
+
+     setTimeout(function () {
+       var el = document.createElement("script");
+       el.type = "text/javascript";
+       el.src = "//vk.com/js/api/openapi.js";
+       el.async = true;
+       if (!document.getElementById("vk_api_transport") === null) {
+         document.getElementById("vk_api_transport").appendChild(el);
+       }
+     }, 0);
+   </script> <!--LiveInternet counter--> <script type="text/javascript"><!--
+     new Image().src = "//counter.yadro.ru/hit;calend?r" +
+         escape(document.referrer) + ((typeof(screen) == "undefined") ? "" :
+         ";s" + screen.width + "*" + screen.height + "*" + (screen.colorDepth ?
+             screen.colorDepth : screen.pixelDepth)) + ";u" + escape(document.URL) +
+         ";" + Math.random();//-->         </script> <!--/LiveInternet--> <!--LiveInternet counter--> <script type="text/javascript"><!--
+    new Image().src = "//counter.yadro.ru/hit;medio?r" +
+        escape(document.referrer) + ((typeof(screen) == "undefined") ? "" :
+        ";s" + screen.width + "*" + screen.height + "*" + (screen.colorDepth ?
+            screen.colorDepth : screen.pixelDepth)) + ";u" + escape(document.URL) +
+        ";h" + escape(document.title.substring(0, 80)) +
+        ";" + Math.random();//-->      </script> <!--/LiveInternet--> <div class="wrapper"><div class="block sidebar" id="sidebar"> <div class="yearbook" style="display: none"> <ul class="twoColumns"><li><a href="/calendar/" class="year yearsSq">Журнал</a></li><li><a href="https://t.me/ru_calend" target="_blank" class="year yearsSq telegram" title="Телеграм-канал Calend.ru"></a></li><li><a href="https://dzen.ru/calend" target="_blank" class="year yearsSq dzen" title="Дзен-канал Calend.ru"></a></li><li><a href="https://dzen.ru/calend" target="_blank" class="year yearsSq vk" title="Сообщество Calend.ru на VK"></a></li></ul> </div> <ul class="links" style="display: none"> <li><a href="/holidays/">Праздники</a></li><li><a href="/names/">Именины</a></li><li><a href="/narod/">Народный календарь</a></li><li><a href="/events/">Хроника</a></li><li><a href="/orgs/">Компании</a></li><li><a href="/persons/">Персоны</a></li><li><a href="/moon/">Лунный календарь</a></li><li><a href="/work/">Производственные календари</a></li><li><a href="/travel/">Календарь путешественника</a></li><li><a href="/afisha/">Материалы от компаний</a></li> </ul> <div class="widget center dateWidget"> <div class="header bggreen">Сегодня</div> <a href="/day/2023-10-20/" style="text-decoration: none"> <span class="month">Октябрь</span> <span class="date orange">20</span> <span class="week">пятница</span> </a> </div> <div class="widget calendar"> <div class="header bggreen" style="margin-bottom: 5px">Календарь</div> <div id="calendar"></div> </div> <div class="widget moonWidget hidden"> <div class="header bggreen">Лунный цикл</div> <ul class="list moonWidget"> <li> <img src="https://www.calend.ru/img/moon/moon-growing.gif" width="17" height="16" title="Растущая луна" alt="Растущая луна"> <p><a href="/moon/2023-10-20/"><strong>Сегодня </strong></a> до 14:29  <a href="/moon/6/">шестой</a> день лунного цикла, после -  <a href="/moon/7/">седьмой</a>. Данные приведены для временного пояса Москвы. Не&nbsp;забудьте сделать поправку для своего места проживания!</p> </li><li> <img src="https://www.calend.ru/img/moon/moon-growing.gif" width="17" height="16" title="Растущая луна" alt="Растущая луна"> <p><a href="/moon/2023-10-21/"><strong>Завтра </strong></a> до 15:16  <a href="/moon/7/">седьмой</a> день лунного цикла, после -  <a href="/moon/8/">восьмой</a>. Данные приведены для временного пояса Москвы. Не&nbsp;забудьте сделать поправку для своего места проживания!</p> </li> </ul> </div> <div class="widget shareWidget"> <div class="header bggreen"><img src="/images/logo.white.png" class="logoWhite"/> <i class="fa fa-share-square-o" aria-hidden="true"></i></div> <div style="padding: 5px;"> <div class="informer" style="text-align: center"> <a href="/"><img src="https://www.calend.ru/img/export/informer.png?20231020" alt="Информер праздники сегодня" title="Праздники сегодня" border="0"></a> <span class="additional">
+      Установите на Вашем сайте или блоге этот информер<br/><strong>«Праздники сегодня»</strong>.
+    <br/><br/> <a href='javascript:void(0);' onClick="if(document.getElementById('kod').style.display=='block') document.getElementById('kod').style.display = 'none';else document.getElementById('kod').style.display = 'block';">Получить код этого информера</a><span class=row>&nbsp;&rarr;</span> <div id=kod style="display:none;"> <b>Вставьте этот код на страницы Вашего сайта:</b> <br> <textarea style="font-size:11px;font-family:arial;width:190px;" rows=9>
+    <!-- Informer www.calend.ru -->
+    <a href=https://www.calend.ru/ target=_blank><img src="https://www.calend.ru/img/export/informer.png?20231020" width="189" alt="Информер праздники сегодня" title="Праздники сегодня" border=0></a>
+      <!-- // Informer www.calend.ru -->
+    </textarea> </div> <br/><br/> <a href="/informer/">Смотреть другие информеры</a><span class=row>&nbsp;&rarr;</span></span> </div> </div> </div> <div class="widget broadcastWidget"> <div class="header bggreen">Рассылка <i class="fa fa-envelope" aria-hidden="true"></i></div> <span class="title big">Пр@здники и именины по&nbsp;e-mail!</span> <p>Подпишитесь на рассылку «Праздники и именины сегодня и завтра», и&nbsp;вы&nbsp;всегда будете в&nbsp;курсе, кого из&nbsp;друзей следует поздравлять!</p> <span class="subscribe"> <form id="sub_form" action="https://subscribe.ru/member/quick" method="get"> <input type="hidden" name="action" value="quick"> <input type="hidden" name="src" value="list_rest.fest.calend"> <input type="hidden" name="grp" value="rest.fest.calend"> <input type="text" name="email" id="email" placeholder="Ваша эл. почта" /> <button class="btn bggreen" id="buttonSubscribe">Подписаться</button> </form> </span> <span class="small gray">Нажимая кнопку "Подписаться", вы подтверждаете согласие с&nbsp;<a href="/privacy_policy/">политикой конфиденциальности сайта</a>.</span><br /> <p><a href="https://www.calend.ru/informer/">Наши информеры</a></p> </div> </div><div class="block main"><div class="printable"><img src="/images/logo.png" alt="Calend.ru"><p>Адрес страницы: https://www.calend.ru/404/</p></div><div class="mainMenu"> <ul class="links"> <li data-block-id="holidaysWidget" ><a href="/holidays/">Праздники</a><div class="widget popupMenu"></div></li><li ><a href="/names/">Именины</a><div class="popupMenu"></div></li><li ><a href="/narod/">Народный календарь</a><div class="popupMenu"></div></li><li ><a href="/events/">Хроника</a><div class="popupMenu"></div></li><li ><a href="/orgs/">Компании</a></li><li ><a href="/persons/">Персоны</a></li><li data-block-id="moonWidget" ><a href="/moon/">Лунный календарь</a><div class="popupMenu"></div></li><li ><a href="/work/">Производственные календари</a><div class="popupMenu"></div></li><li ><a href="/travel/">Календарь путешественника</a><div class="popupMenu"></div></li><li ><a href="/afisha/">Материалы от компаний</a><div class="popupMenu"></div></li> </ul> </div><!-- mainmenu --> <div class="widget holidaysWidget hidden"> <div class="header bggreen">Праздники <i class="fa fa-birthday-cake" aria-hidden="true"></i></div> <ul class="list"> <li> <span class="title big">Государственные </span> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/1.gif">&nbsp;<a href="/holidays/russtate/">Россия</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/6.gif">&nbsp;<a href="/holidays/ukraine/">Украина</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/7.gif">&nbsp;<a href="/holidays/belorus/">Беларусь</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/98.gif">&nbsp;<a href="/holidays/abkhazia/">Абхазия</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/20.gif">&nbsp;<a href="/holidays/australia/">Австралия</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/36.gif">&nbsp;<a href="/holidays/austria/">Австрия</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/50.gif">&nbsp;<a href="/holidays/azerbaijan/">Азербайджан</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/69.gif">&nbsp;<a href="/holidays/albania/">Албания</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/85.gif">&nbsp;<a href="/holidays/argentina/">Аргентина</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/17.gif">&nbsp;<a href="/holidays/armenia/">Армения</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/83.gif">&nbsp;<a href="/holidays/belgium/">Бельгия</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/43.gif">&nbsp;<a href="/holidays/bulgaria/">Болгария</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/78.gif">&nbsp;<a href="/holidays/bosnia/">Босния</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/48.gif">&nbsp;<a href="/holidays/brasil/">Бразилия</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/19.gif">&nbsp;<a href="/holidays/greatbritan/">Великобритания</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/52.gif">&nbsp;<a href="/holidays/hungary/">Венгрия</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/80.gif">&nbsp;<a href="/holidays/vietnam/">Вьетнам</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/18.gif">&nbsp;<a href="/holidays/germany/">Германия</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/46.gif">&nbsp;<a href="/holidays/greece/">Греция</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/34.gif">&nbsp;<a href="/holidays/georgia/">Грузия</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/51.gif">&nbsp;<a href="/holidays/denmark/">Дания</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/89.gif">&nbsp;<a href="/holidays/egypt/">Египет</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/93.gif">&nbsp;<a href="/holidays/zimbabwe/">Зимбабве</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/41.gif">&nbsp;<a href="/holidays/india/">Индия</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/192.gif">&nbsp;<a href="/holidays/iordan/">Иордания</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/67.gif">&nbsp;<a href="/holidays/irland/">Ирландия</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/42.gif">&nbsp;<a href="/holidays/iceland/">Исландия</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/29.gif">&nbsp;<a href="/holidays/spain/">Испания</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/28.gif">&nbsp;<a href="/holidays/italy/">Италия</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/8.gif">&nbsp;<a href="/holidays/kazahstan/">Казахстан</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/75.gif">&nbsp;<a href="/holidays/cameroon/">Камерун</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/24.gif">&nbsp;<a href="/holidays/canada/">Канада</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/74.gif">&nbsp;<a href="/holidays/kipr/">Кипр</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/21.gif">&nbsp;<a href="/holidays/china/">Китай</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/194.gif">&nbsp;<a href="/holidays/komy/">Коми</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/87.gif">&nbsp;<a href="/holidays/costarica/">Коста-Рика</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/68.gif">&nbsp;<a href="/holidays/cuba/">Куба</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/31.gif">&nbsp;<a href="/holidays/kirgistan/">Кыргызстан</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/11.gif">&nbsp;<a href="/holidays/latvia/">Латвия</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/71.gif">&nbsp;<a href="/holidays/lebanon/">Ливан</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/10.gif">&nbsp;<a href="/holidays/litva/">Литва</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/44.gif">&nbsp;<a href="/holidays/luxemburg/">Люксембург</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/94.gif">&nbsp;<a href="/holidays/madagascar/">Мадагаскар</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/45.gif">&nbsp;<a href="/holidays/mexico/">Мексика</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/25.gif">&nbsp;<a href="/holidays/moldova/">Молдова</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/100.gif">&nbsp;<a href="/holidays/nigeria/">Нигерия</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/32.gif">&nbsp;<a href="/holidays/holland/">Нидерланды</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/170.gif">&nbsp;<a href="/holidays/newzealand/">Новая Зеландия</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/39.gif">&nbsp;<a href="/holidays/norway/">Норвегия</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/95.gif">&nbsp;<a href="/holidays/panama/">Панама</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/92.gif">&nbsp;<a href="/holidays/peru/">Перу</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/38.gif">&nbsp;<a href="/holidays/poland/">Польша</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/37.gif">&nbsp;<a href="/holidays/portugal/">Португалия</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/49.gif">&nbsp;<a href="/holidays/rumania/">Румыния</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/14.gif">&nbsp;<a href="/holidays/usa/">США</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/40.gif">&nbsp;<a href="/holidays/serbia/">Сербия</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/193.gif">&nbsp;<a href="/holidays/syria/">Сирия</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/81.gif">&nbsp;<a href="/holidays/slovenia/">Словения</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/62.gif">&nbsp;<a href="/holidays/tadjikistan/">Таджикистан</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/65.gif">&nbsp;<a href="/holidays/thailand/">Таиланд</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/58.gif">&nbsp;<a href="/holidays/tunis/">Тунис</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/9.gif">&nbsp;<a href="/holidays/turkmen/">Туркменистан</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/33.gif">&nbsp;<a href="/holidays/turkish/">Турция</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/16.gif">&nbsp;<a href="/holidays/uzbekistan/">Узбекистан</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/30.gif">&nbsp;<a href="/holidays/finlandia/">Финляндия</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/27.gif">&nbsp;<a href="/holidays/france/">Франция</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/76.gif">&nbsp;<a href="/holidays/croatia/">Хорватия</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/77.gif">&nbsp;<a href="/holidays/montenegro/">Черногория</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/23.gif">&nbsp;<a href="/holidays/chech/">Чехия</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/96.gif">&nbsp;<a href="/holidays/switzerland/">Швейцария</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/47.gif">&nbsp;<a href="/holidays/sweden/">Швеция</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/91.gif">&nbsp;<a href="/holidays/ecuador/">Эквадор</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/26.gif">&nbsp;<a href="/holidays/estonia/">Эстония</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/84.gif">&nbsp;<a href="/holidays/ethiopia/">Эфиопия</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/35.gif">&nbsp;<a href="/holidays/southkorea/">Южная Корея</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/99.gif">&nbsp;<a href="/holidays/southossetia/">Южная Осетия</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/90.gif">&nbsp;<a href="/holidays/jamaica/">Ямайка</a></p> <p><img border="0" width="16" height="11" src="https://www.calend.ru/img/types/22.gif">&nbsp;<a href="/holidays/japan/">Япония</a></p> <span class="showAll"><span class="dashed brief">Все государства</span><span
+        class="dashed opened">Свернуть</span></span> </li><li> <span class="title big">Религиозные</span> <p> <img border="0" width="16" height="11" src="https://www.calend.ru/img/types/2.gif">&nbsp;
+      <a href="/holidays/orthodox/">Православные</a> </p> <p> <img border="0" width="16" height="11" src="https://www.calend.ru/img/types/3.gif">&nbsp;
+      <a href="/holidays/katolic/">Католические</a> </p> <p> <img border="0" width="16" height="11" src="https://www.calend.ru/img/types/63.gif">&nbsp;
+      <a href="/holidays/evangelical/">Лютеранские</a> </p> <p> <img border="0" width="16" height="11" src="https://www.calend.ru/img/types/5.gif">&nbsp;
+      <a href="/holidays/islam/">Мусульманские</a> </p> <p> <img border="0" width="16" height="11" src="https://www.calend.ru/img/types/4.gif">&nbsp;
+      <a href="/holidays/jew/">Еврейские</a> </p> <p> <img border="0" width="16" height="11" src="https://www.calend.ru/img/types/59.gif">&nbsp;
+      <a href="/holidays/buddhism/">Буддийские</a> </p> <p> <img border="0" width="16" height="11" src="https://www.calend.ru/img/types/70.gif">&nbsp;
+      <a href="/holidays/hinduism/">Индуизм</a> </p> <p> <img border="0" width="16" height="11" src="https://www.calend.ru/img/types/53.gif">&nbsp;
+      <a href="/holidays/bahai/">Бахаи</a> </p> <p> <img border="0" width="16" height="11" src="https://www.calend.ru/img/types/72.gif">&nbsp;
+      <a href="/holidays/zoroastrianism/">Зороастризм</a> </p> <p> <img border="0" width="16" height="11" src="https://www.calend.ru/img/types/55.gif">&nbsp;
+      <a href="/holidays/slav/">Славянские</a> </p> <p> <img border="0" width="16" height="11" src="https://www.calend.ru/img/types/64.gif">&nbsp;
+      <a href="/holidays/pagan/">Языческие</a> </p> <span class="showAll"><span class="dashed brief">Все религии</span><span class="dashed opened">Свернуть</span></span> </li><li> <span class="title big">По категориям</span> <p> <a href="/holidays/prof/">Профессиональные</a> </p> <p> <a href="/holidays/wholeworld/">Международные</a> </p> <p> <a href="/holidays/un/">ООН</a> </p> <p> <a href="/holidays/comm/">Деловые</a> </p> <p> <a href="/holidays/dvsr/">Дни воинской славы России</a> </p> <p> <a href="/holidays/army/">Армейские</a> </p> <p> <a href="/holidays/grand/">Величественные</a> </p> <p> <a href="/holidays/ww/">ВОВ</a> </p> <p> <a href="/holidays/water/">Водные</a> </p> <p> <a href="/holidays/eat/">Гастрономические</a> </p> <p> <a href="/holidays/child/">Детские</a> </p> <p> <a href="/holidays/icons/">В честь икон</a> </p> <p> <a href="/holidays/Saints/">Дни памяти святых</a> </p> <p> <a href="/holidays/constitution/">Конституционные</a> </p> <p> <a href="/holidays/culture/">Культурные</a> </p> <p> <a href="/holidays/media/">Масс-медийные</a> </p> <p> <a href="/holidays/youth/">Молодежные</a> </p> <p> <a href="/holidays/science/">Научно-технические</a> </p> <p> <a href="/holidays/independent/">Независимые</a> </p> <p> <a href="/holidays/unusual/">Необычные</a> </p> <p> <a href="/holidays/nature/">Природные</a> </p> <p> <a href="/holidays/medical/">Медицинские</a> </p> <p> <a href="/holidays/fasting/">Посты</a> </p> <p> <a href="/holidays/family/">Семейные</a> </p> <p> <a href="/holidays/network/">Сетевые</a> </p> <p> <a href="/holidays/glory/">Славные</a> </p> <p> <a href="/holidays/sport/">Спортивные</a> </p> <p> <a href="/holidays/championship/">Турниры</a> </p> <p> <a href="/holidays/teacher/">Учительские</a> </p> <p> <a href="/holidays/festival/">Фестивали</a> </p> <p> <a href="/holidays/finance/">Финансовые</a> </p> <p> <a href="/holidays/navy/">Флотские</a> </p> <p> <a href="/holidays/ecology/">Экологические</a> </p> <p> <a href="/holidays/law/">Юридические</a> </p> <p> <a href="/holidays/language/">Языковые</a> </p> <span class="showAll"><span class="dashed brief">Все категории</span><span
+        class="dashed opened">Свернуть</span></span> </li> </ul> </div> <div class="timeline"> <span class="bgorange"></span> <ul class="fortnite" data-current="0" data-count="3"> <li id="day_2023-10-20" data-block-id="div_2023-10-20"> <span class="header">Сегодня</span> <span class="title date"><img src="https://www.calend.ru/img/moon/moon-growing.gif" width="17" height="16" title="Растущая луна" alt="Растущая луна"> <a href="/day/2023-10-20/" rel="nofollow">20 октября 2023 года, пятница</a></span> <div class="wrapIn"> <p> <a href="/holidays/0/0/2909/">Международный день поваров</a> <img border="0" width="16" height="11" src="https://www.calend.ru/img/types/15.gif"> </p> <p> <span class="dashed">...а также еще&nbsp;38&nbsp;событий</span> </p> </div> </li><li id="day_2023-10-21" data-block-id="div_2023-10-21"> <span class="header">Завтра</span> <span class="title date"><img src="https://www.calend.ru/img/moon/moon-growing.gif" width="17" height="16" title="Растущая луна" alt="Растущая луна"> <a href="/day/2023-10-21/" rel="nofollow">21 октября 2023 года, суббота</a></span> <div class="wrapIn"> <p> <a href="/holidays/0/0/2656/">День Трафальгарского сражения</a> <img border="0" width="16" height="11" src="https://www.calend.ru/img/types/19.gif"> </p> <p> <span class="dashed">...а также еще&nbsp;34&nbsp;события</span> </p> </div> </li><li id="day_2023-10-22" data-block-id="div_2023-10-22"> <span class="header">Послезавтра</span> <span class="title date"><img src="https://www.calend.ru/img/moon/moon-growing.gif" width="17" height="16" title="Растущая луна" alt="Растущая луна"> <a href="/day/2023-10-22/" rel="nofollow">22 октября 2023 года, воскресенье</a></span> <div class="wrapIn"> <p> <a href="/holidays/0/0/3077/">Международный день заикающихся людей</a> <img border="0" width="16" height="11" src="https://www.calend.ru/img/types/15.gif"> </p> <p> <span class="dashed">...а также еще&nbsp;34&nbsp;события</span> </p> </div> </li> </ul> <ul class="arrows"> <li class="left"><i class="fa fa-arrow-left" aria-hidden="true"></i></li><li class="right"><i class="fa fa-arrow-right" aria-hidden="true"></i></li> </ul> </div> <div id="popup_timeline"> <div class="widget hidden div_2023-10-20" id="div_2023-10-20"> <div class="timelineDayClose mobile_only" style="float: right"><a href="javascript:void(0)"><img src="/images/close.png" width="22" height="22" /></a></div> <span class="title date" style="padding: 0; margin-left: 0"><img src="https://www.calend.ru/img/moon/moon-growing.gif" width="17" height="16" title="Растущая луна" alt="Растущая луна"> <a href="/day/2023-10-20/" rel="nofollow">20 октября 2023 года, пятница</a></span> <p> <a href="/holidays/0/0/2909/">Международный день поваров</a> <img border="0" width="16" height="11" src="https://www.calend.ru/img/types/15.gif"> </p> <a href="/holidays/2023-10-20/" class="subtitle green">Праздники</a> <p> <p> <a href="/holidays/0/0/2247/">Международный день авиадиспетчера</a> <img border="0" width="16" height="11" src="https://www.calend.ru/img/types/15.gif"> </p> <p> <a href="/holidays/0/0/3653/">Международный день ленивца</a> <img border="0" width="16" height="11" src="https://www.calend.ru/img/types/15.gif"> </p> <p> <a href="/holidays/0/0/3325/">Всемирный день борьбы с остеопорозом</a> <img border="0" width="16" height="11" src="https://www.calend.ru/img/types/15.gif"> </p> <p> <a href="/holidays/2023-10-20/" style="font-style: italic; color: rgba(255, 100, 0, 1) ">Все праздники
+          в этот
+          день</a> </p> <p><strong>В народном календаре</strong> <a href="/narod/6763/">Сергей Зимний</a> </p> <p><a href="/names/2023-10-20/" class="subtitle green" style="display: inline">Именины</a> <a href="/names/0/0/161/">Юлиан</a>,           
+      <a href="/names/0/0/74/">Иосиф</a>,           
+      <a href="/names/0/0/144/">Сергей</a>,           
+      <a href="/names/0/0/114/">Николай</a>,           
+      <a href="/names/0/0/98/">Марк</a>,           
+      <a href="/names/0/0/90/">Леонтий</a>,           
+      <a href="/names/0/0/276/">Пелагея</a> </p> <p><a href="/events/2023-10-20/" class="subtitle green">Хроника
+            (4)</a></p> <p><a href="/persons/2023-10-20/" class="subtitle green">Персоны дня
+        (17)</a></p> </div> <div class="widget hidden div_2023-10-21" id="div_2023-10-21"> <div class="timelineDayClose mobile_only" style="float: right"><a href="javascript:void(0)"><img src="/images/close.png" width="22" height="22" /></a></div> <span class="title date" style="padding: 0; margin-left: 0"><img src="https://www.calend.ru/img/moon/moon-growing.gif" width="17" height="16" title="Растущая луна" alt="Растущая луна"> <a href="/day/2023-10-21/" rel="nofollow">21 октября 2023 года, суббота</a></span> <p> <a href="/holidays/0/0/2656/">День Трафальгарского сражения</a> <img border="0" width="16" height="11" src="https://www.calend.ru/img/types/19.gif"> </p> <a href="/holidays/2023-10-21/" class="subtitle green">Праздники</a> <p> <p> <a href="/holidays/0/0/2278/">День сладостей в США</a> <img border="0" width="16" height="11" src="https://www.calend.ru/img/types/14.gif"> </p> <p><strong>В народном календаре</strong> <a href="/narod/6764/">Трифон и Пелагея</a> </p> <p><a href="/names/2023-10-21/" class="subtitle green" style="display: inline">Именины</a> <a href="/names/0/0/29/">Василий</a>,           
+      <a href="/names/0/0/226/">Елизавета</a>,           
+      <a href="/names/0/0/258/">Мария</a>,           
+      <a href="/names/0/0/122/">Павел</a>,           
+      <a href="/names/0/0/265/">Надежда</a>,           
+      <a href="/names/0/0/38/">Владимир</a>,           
+      <a href="/names/0/0/33/">Виктор</a>,           
+      <a href="/names/0/0/114/">Николай</a>,           
+      <a href="/names/0/0/295/">Татьяна</a>,           
+      <a href="/names/0/0/58/">Дмитрий</a>,           
+      <a href="/names/0/0/125/">Петр</a>,           
+      <a href="/names/0/0/68/">Иван</a>,           
+      <a href="/names/0/0/276/">Пелагея</a>,           
+      <a href="/names/0/0/293/">Таисия</a> </p> <p><a href="/events/2023-10-21/" class="subtitle green">Хроника
+            (3)</a></p> <p><a href="/persons/2023-10-21/" class="subtitle green">Персоны дня
+        (14)</a></p> </div> <div class="widget hidden div_2023-10-22" id="div_2023-10-22"> <div class="timelineDayClose mobile_only" style="float: right"><a href="javascript:void(0)"><img src="/images/close.png" width="22" height="22" /></a></div> <span class="title date" style="padding: 0; margin-left: 0"><img src="https://www.calend.ru/img/moon/moon-growing.gif" width="17" height="16" title="Растущая луна" alt="Растущая луна"> <a href="/day/2023-10-22/" rel="nofollow">22 октября 2023 года, воскресенье</a></span> <p> <a href="/holidays/0/0/3077/">Международный день заикающихся людей</a> <img border="0" width="16" height="11" src="https://www.calend.ru/img/types/15.gif"> </p> <a href="/holidays/2023-10-22/" class="subtitle green">Праздники</a> <p> <p> <a href="/holidays/0/0/3302/">Международный день тёщи</a> <img border="0" width="16" height="11" src="https://www.calend.ru/img/types/15.gif"> </p> <p> <a href="/holidays/0/0/3318/">День финансово-экономической службы Вооруженных Сил РФ</a> <img border="0" width="16" height="11" src="https://www.calend.ru/img/types/1.gif"> </p> <p> <a href="/holidays/0/0/3439/">День алии в Израиле</a> <img border="0" width="16" height="11" src="https://www.calend.ru/img/types/4.gif"> </p> <p><strong>В народном календаре</strong> <a href="/narod/6765/">Яков Дровопилец</a> </p> <p><a href="/names/2023-10-22/" class="subtitle green" style="display: inline">Именины</a> <a href="/names/0/0/324/">Яков</a>,           
+      <a href="/names/0/0/65/">Ефим</a>,           
+      <a href="/names/0/0/96/">Максим</a>,           
+      <a href="/names/0/0/83/">Константин</a>,           
+      <a href="/names/0/0/125/">Петр</a>,           
+      <a href="/names/0/0/1/">Авраам</a> </p> <p><a href="/events/2023-10-22/" class="subtitle green">Хроника
+            (5)</a></p> <p><a href="/persons/2023-10-22/" class="subtitle green">Персоны дня
+        (18)</a></p> </div> </div> <div class="block content"> <div class="breadcrumbs"> <span itemscope itemtype="http://schema.org/BreadcrumbList"> <span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"> <a href="/" itemprop="item"> <span itemprop="name">Главная страница</span> </a> /
+                              <meta itemprop="position" content="1"> </span> <span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"> <span itemprop="name">Страница не найдена</span> <a itemprop="item" href="https://www.calend.ru/404/"></a> <meta itemprop="position" content="2"> </span> </span> </div> <h1>Страница не найдена. Ошибка 404.</h1> <div class="text"> <p>
+        Вы находитесь на сайте Календаря Событий «Calend.ru».
+      </p> <p>
+        К сожалению, страницы, куда Вы собирались перейти, не существует. Однако это не значит, что информации, за
+        которой Вы пришли, у нас нет. Возможно, страница была перемещена или переименована.
+      </p> <p>
+        Наша рекомендация: воспользуйтесь формой поиска либо перейдите на <a href="/">главную страницу</a>.
+      </p> </div> </div> </div> <div class="footer bgwhite"> <div class="wrap"> <ul class="threeColumns"> <li class="copyrights"> <p>© 2005—2023 Проект «Календарь событий»</p> <p><a href="/"><img src="/images/logo.footer.png" class="logo" /></a></p> </li><li class="links"> <ul class="inlne-menu"> <li><a href="/about/">О проекте</a></li><li><a href="/reklama/">Реклама</a></li><li><a href="/contact/">Контакты</a></li><li><a href="/informer/">Информеры</a></li> </ul> <ul class="inlne-menu"> <li><a href="/condition/">Условия использования сайта</a></li><li><a href="/terms_of_use/">Пользовательское соглашение</a></li><li><a href="/privacy_policy/">Политика конфиденциальности</a></li> </ul> </li><li class="counter"> <!--LiveInternet logo--> <a href="http://www.liveinternet.ru/click;calend" target="_blank"><img src="//counter.yadro.ru/logo;calend?52.1" title="LiveInternet: показано число просмотров за 24 часа, посетителей за 24 часа и за сегодня" alt="" border="0" width="88" height="31"/></a> <!--/LiveInternet--> </li> </ul> <p>Учредитель — ООО «Квантор» <br/>
+    Адрес учредителя: 198516 Санкт-Петербург, г. Петергоф, Санкт-Петербургский пр., д.60, лит.А, ч.п. 2-Н, оф.432, 434
+    </p> <p>Издатель — <span itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization"> <link itemprop="url" href="http://medio.pro"> <a href="http://medio.pro" rel='nofollow' target="_blank"><span itemprop="name">
+            ООО «МЕДИО»
+            </span></a> <br />
+    Адрес издателя: 198516 Санкт-Петербург, г. Петергоф, Санкт-Петербургский пр., д.60, лит.А, ч.п. 2-Н, оф.440<br /><br />
+
+          Главный редактор - Комарова Мария Сергеевна<br /> <span itemprop="address" itemscope="" itemtype="http://schema.org/PostalAddress">
+            Адрес редакции:
+            <span itemprop="postalCode"> 198516</span> <span itemprop="addressLocality">Санкт-Петербург, г. Петергоф</span>,
+            <span itemprop="streetAddress">Санкт-Петербургский пр., д.60, лит.А, ч.п. 2-Н, оф.432, 434</span> </span> <br/>
+          Телефон:<span itemprop="telephone">+7 812 640-06-60</span><br>
+          Электронная почта: <a href="mailto:hello@medio.pro"><span itemprop="email">hello@medio.pro</span></a></p> <span itemprop="logo" itemscope itemtype="https://schema.org/ImageObject"> <link href="http://medio.pro/images/medio-logo-small.png" itemprop="url"> <meta itemprop="image" content="http://medio.pro/images/medio-logo-small.png"> <meta itemprop="width" content="85"> <meta itemprop="height" content="60"> </span> </span> <p class="gray copy">Использование любой информации CALEND.RU на веб-сайтах возможно только при условии наличия у каждого скопированного материала активной гиперссылки на страницу-источник.
+    <br />
+    Использование информации сайта в оффлайн-СМИ (радио, телевидение, газеты и т.п.) требует <b>особого согласования</b>.
+    Для согласования <a href="/contact/">отправьте запрос</a>.
+    <br /> <br /> <a href="#" onclick="if(window.__lxG__consent__!==undefined&&window.__lxG__consent__.getState()!==null){window.__lxG__consent__.showConsent()} else {alert('This function only for users from European Economic Area (EEA)')}; return false">Изменить настройки конфиденциальности</a> (только для жителей EEA).
+    
+</p> </div> </div><!-- FOOTER --> <div class="magnet"> <div class="wrap"> <div class="burger"><img src="/images/burger.png" /></div><div class="close"><img src="/images/close.png" /></div><div class="logo"> <a href="/"><img src="/images/logo.png" alt="Calend.ru" /></a></div><div class="yearbook"> <ul class="twoColumns"><li><a href="/calendar/" class="year yearsSq">Журнал</a></li><li><a href="https://t.me/ru_calend" target="_blank" class="year yearsSq telegram" title="Телеграм-канал Calend.ru"></a></li><li><a href="https://dzen.ru/calend" target="_blank" class="year yearsSq dzen" title="Дзен-канал Calend.ru"></a></li><li><a href="https://vk.com/ru_calend" target="_blank" class="year yearsSq vk" title="Сообщество Calend.ru на VK"></a></li></ul> </div><span class="search"><form action="/search/"><input type="text" name="search" class="searchField" placeholder="Поиск" id="search-input" /><button type="submit"><img src="/images/search.png" alt="Искать!"></button></form> </span><span class="mobile_search"><button id="mobSearchOpen" onclick="$('.mobile_search_field').toggle()"><img src="/images/search.png" alt="Поиск" /></button> <div class="mobile_search_field"><form action="/search/"><input type="text" name="search" class="searchField" placeholder="Поиск" id="search-input" /><button type="submit" class="btn">Искать!</button></form></div> </span><span class="auth"><a href="#" class="btn bggreen registration"><i class="fa fa-user-circle-o" aria-hidden="true"></i> <span class="text">Регистрация</span></a> <a href="#" class="btn bgorange authorization"><i class="fa fa-sign-in" aria-hidden="true"></i> <span class="text">Вход</span></a> <div class="regWindow"> <span class="btnClose"><img src="/images/close.png"/></span> <form method="POST" action="/register/"> <div class="line"> <span class="h3">Регистрация</span> <span class="title">Эл. почта</span> <input type="text" class="f01" id="reg-email" name="email"> </div> <div class="line"> <span class="title">Логин</span> <input type="text" class="f01" name="login"> <p class="small">только латиница и символы "-", "_"; не менее 4 символов</p> </div> <div class="line"> <span class="title">Пароль</span> <input type="password" name="password"> <span class="title">Еще раз</span> <input type="password" name="password_confirm"> </div> <div class="line captcha"> <div class="g-recaptcha" data-sitekey="6Ld3GFIUAAAAACqaJkmW-paNHcSoOn-kspldnWjT"></div> </div> <p class="small">Нажимая кнопку "Зарегистрироваться", вы подтверждаете согласие с <a href="/privacy_policy/">политикой
+        конфиденциальности сайта</a></p> <button class="btn bgorange">Зарегистрироваться</button> </form> </div> <div class="authWindow"> <span class="btnClose"><img src="/images/close.png"/></span> <form method="POST" action="/login/"> <div class="line"> <span class="h3">Авторизация</span> <span class="title">Логин</span> <input type="text" class="f01" name="login"> </div> <div class="line"> <span class="title">Пароль</span> <input type="password" name="password"> </div> <p><input type="checkbox" name="remember" value="1"> Запомнить меня</p> <button class="btn bggreen">Войти</button> <p><a href="/forgot/">Забыли пароль?</a></p> </form> </div> </span> </div><!-- wrap --> </div><!-- MAGNET --> <div class="gotop" style="display: block;"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></div> <div id="adfox_164474868240467012"></div> <script>
+    window.yaContextCb.push(()=>{
+        Ya.adfoxCode.create({
+            ownerId: 1152,
+            containerId: 'adfox_164474868240467012',
+            params: {
+                pp: 'h',
+                ps: 'utn',
+                p2: 'eoht',
+                puid1: '',
+                puid2: '',
+                puid3: '',
+                puid4: '',
+                puid5: '',
+                puid6: '',
+                puid7: ''
+            }
+        })
+    })
+</script> <!-- Yandex.Metrika counter --> <script type="text/javascript">
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter14585941 = new Ya.Metrika({
+                    id:14585941,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true
+                });
+            } catch(e) { }
+        });
+
+        var n = d.getElementsByTagName("script")[0],
+            s = d.createElement("script"),
+            f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(document, window, "yandex_metrika_callbacks");
+      window._taboola = window._taboola || [];
+      _taboola.push({flush: true});
+</script> <noscript> <div><img src="//mc.yandex.ru/watch/14585941" style="position:absolute; left:-9999px;" alt=""/></div> </noscript> <!-- /Yandex.Metrika counter --> </body> </html>

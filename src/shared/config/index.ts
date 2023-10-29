@@ -16,3 +16,4 @@ type NamesItem = {
 
 export const HOLYDAYS = HOLYDAYS_JSON as HolydayItem[];
 export const NAMES = NAMES_JSON as NamesItem[];
+export { theme } from './theme';

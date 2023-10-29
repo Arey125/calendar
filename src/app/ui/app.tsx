@@ -1,10 +1,10 @@
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import FullCalendar from '@fullcalendar/react';
-import { Box, CssBaseline, Stack } from '@mui/material';
+import { AppBar, Box, CssBaseline, Stack, ThemeProvider, Toolbar, Typography } from '@mui/material';
 import { useLayoutEffect, useMemo, useRef, useState } from 'react';
 
-import { HOLYDAYS, NAMES } from 'shared/config';
+import { HOLYDAYS, NAMES, theme } from 'shared/config';
 import { Events } from './events';
 import { Names } from './names';
 
@@ -32,7 +32,7 @@ export const App = () => {
   );
 
   const currentNames = useMemo(() => {
-    const item = NAMES.find((item) => item.date === currentDate);
+    const item = NAMES.find(({ date }) => date === currentDate);
     if (!item) {
       return [];
     }
@@ -40,9 +40,16 @@ export const App = () => {
   }, [currentDate]);
 
   return (
-    <div>
+    <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Stack direction="row" justifyContent="center">
+      <AppBar position="static">
+        <Toolbar>
+          <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
+            Календарь
+          </Typography>
+        </Toolbar>
+      </AppBar>
+      <Stack direction="row" justifyContent="center" marginTop={2}>
         <Box width="60vw">
           <FullCalendar
             ref={ref}
@@ -52,11 +59,11 @@ export const App = () => {
             dateClick={(info) => setDate(info.dateStr)}
           />
         </Box>
-        <Stack paddingTop={8} p={2} width="30vw" height="80vh" overflow="auto">
+        <Stack paddingTop={8} p={2} width="30vw" height="calc(100vh - 100px)" overflow="auto">
           <Events items={currentHolydays} />
           <Names items={currentNames} />
-        </Box>
+        </Stack>
       </Stack>
-    </div>
+    </ThemeProvider>
   );
 };
