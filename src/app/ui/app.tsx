@@ -1,12 +1,28 @@
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import FullCalendar from '@fullcalendar/react';
-import { AppBar, Box, CssBaseline, Stack, ThemeProvider, Toolbar, Typography } from '@mui/material';
+import {
+  AppBar,
+  Box,
+  CssBaseline,
+  Stack,
+  styled,
+  ThemeProvider,
+  Toolbar,
+  Typography,
+} from '@mui/material';
 import { useLayoutEffect, useMemo, useRef, useState } from 'react';
 
-import { HOLYDAYS, NAMES, theme } from 'shared/config';
+import { HOLYDAYS, NAMES, theme as appTheme } from 'shared/config';
 import { Events } from './events';
 import { Names } from './names';
+
+const FullCalendarBox = styled(Box)(({ theme }) => ({
+  '& button': {
+    backgroundColor: `${theme.palette.primary.main} !important`,
+    borderColor: `${theme.palette.primary.dark} !important`,
+  },
+}));
 
 export const App = () => {
   const ref = useRef<FullCalendar>(null);
@@ -40,7 +56,7 @@ export const App = () => {
   }, [currentDate]);
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={appTheme}>
       <CssBaseline />
       <AppBar position="static">
         <Toolbar>
@@ -50,15 +66,18 @@ export const App = () => {
         </Toolbar>
       </AppBar>
       <Stack direction="row" justifyContent="center" marginTop={2}>
-        <Box width="60vw">
+        <FullCalendarBox width="60vw">
           <FullCalendar
             ref={ref}
             plugins={[dayGridPlugin, interactionPlugin]}
             initialView="dayGridMonth"
             locale="ru"
             dateClick={(info) => setDate(info.dateStr)}
+            buttonText={{
+              today: 'Сегодня',
+            }}
           />
-        </Box>
+        </FullCalendarBox>
         <Stack paddingTop={8} p={2} width="30vw" height="calc(100vh - 100px)" overflow="auto">
           <Events items={currentHolydays} />
           <Names items={currentNames} />
