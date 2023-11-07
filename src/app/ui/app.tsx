@@ -32,7 +32,7 @@ export const App = () => {
 
   useEffect(() => {
     void (async () => {
-      const HOLYDAY_VALUES = await getValuesFromCsv('/holydays.csv');
+      const HOLYDAY_VALUES = await getValuesFromCsv('/holyday.csv');
       setHolydays(
         HOLYDAY_VALUES.map(([date, category, title, description, image]) => ({
           date,
