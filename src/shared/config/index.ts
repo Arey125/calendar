@@ -1,7 +1,4 @@
-import HOLYDAYS_JSON from './holydays.json';
-import NAMES_JSON from './names.json';
-
-type HolydayItem = {
+export type HolydayItem = {
   date: string;
   category: string;
   title: string;
@@ -9,11 +6,19 @@ type HolydayItem = {
   image: string;
 };
 
-type NamesItem = {
+export type NamesItem = {
   date: string;
   names: string;
 };
 
-export const HOLYDAYS = HOLYDAYS_JSON as HolydayItem[];
-export const NAMES = NAMES_JSON as NamesItem[];
+export const getValuesFromCsv = async (path: string) => {
+  const response = await fetch(path);
+  if (!response.ok) {
+    return [];
+  }
+  const file = await response.text();
+  const lines = file.split('\n');
+  return lines.map((line) => line.split(';'));
+};
+
 export { theme } from './theme';

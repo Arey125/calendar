@@ -11,9 +11,9 @@ import {
   Toolbar,
   Typography,
 } from '@mui/material';
-import { useLayoutEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 
-import { HOLYDAYS, NAMES, theme as appTheme } from 'shared/config';
+import { getValuesFromCsv, HolydayItem, NamesItem, theme as appTheme } from 'shared/config';
 import { Events } from './events';
 import { Names } from './names';
 
@@ -26,6 +26,26 @@ const FullCalendarBox = styled(Box)(({ theme }) => ({
 
 export const App = () => {
   const ref = useRef<FullCalendar>(null);
+
+  const [holydays, setHolydays] = useState<HolydayItem[]>([]);
+  const [names, setNames] = useState<NamesItem[]>([]);
+
+  useEffect(() => {
+    void (async () => {
+      const HOLYDAY_VALUES = await getValuesFromCsv('/holydays.csv');
+      setHolydays(
+        HOLYDAY_VALUES.map(([date, category, title, description, image]) => ({
+          date,
+          category,
+          title,
+          description,
+          image,
+        })),
+      );
+      const NAMES_VALUES = await getValuesFromCsv('/names.csv');
+      setNames(NAMES_VALUES.map(([date, nameValues]) => ({ date, names: nameValues })));
+    })();
+  }, []);
 
   const [currentDate, setCurrentDate] = useState<string | null>(null);
   const localeDate = useMemo(() => {
@@ -65,17 +85,17 @@ export const App = () => {
   }, []);
 
   const currentHolydays = useMemo(
-    () => HOLYDAYS.filter((item) => item.date === localeDate),
-    [localeDate],
+    () => holydays.filter((item) => item.date === localeDate),
+    [localeDate, holydays],
   );
 
   const currentNames = useMemo(() => {
-    const item = NAMES.find(({ date }) => date === localeDate);
+    const item = names.find(({ date }) => date === localeDate);
     if (!item) {
       return [];
     }
     return item.names.split(', ');
-  }, [localeDate]);
+  }, [localeDate, names]);
 
   return (
     <ThemeProvider theme={appTheme}>
