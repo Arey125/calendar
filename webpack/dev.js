@@ -1,7 +1,6 @@
 const path = require('path');
 const { merge } = require('webpack-merge');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-const ForkTsCheckerNotifierWebpackPlugin = require('fork-ts-checker-notifier-webpack-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const ReactRefreshTypeScript = require('react-refresh-typescript');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -69,9 +68,6 @@ module.exports = merge(common, {
   plugins: [
     new ReactRefreshWebpackPlugin(),
     new ForkTsCheckerWebpackPlugin(),
-    new ForkTsCheckerNotifierWebpackPlugin({
-      excludeWarnings: true,
-    }),
     new CircularDependencyPlugin({
       exclude: /a\.js|node_modules/,
       include: /dir/,
@@ -84,6 +80,9 @@ module.exports = merge(common, {
       template: path.join(staticPath, 'index.html'),
     }),
   ],
+  performance: {
+    hints: false,
+  },
   optimization: {
     runtimeChunk: true,
     removeAvailableModules: false,
