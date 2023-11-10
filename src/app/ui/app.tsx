@@ -16,7 +16,9 @@ import { useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { theme as appTheme } from 'shared/config';
 import { useData } from 'shared/model';
 import { AutoScroll } from 'shared/ui';
+import { Icon } from './assets';
 import { Events, Names } from './components';
+import './index.css';
 
 const FullCalendarBox = styled(Box)(({ theme }) => ({
   '& button': {
@@ -62,12 +64,31 @@ export const App = () => {
       <CssBaseline />
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="h4" component="div" sx={{ paddingLeft: 8 }}>
+          <img src={Icon} alt="" height="44px" />
+          <Typography variant="h4" component="div" sx={{ paddingLeft: 4, fontSize: '28px' }}>
             Календарь
+          </Typography>
+          <Typography
+            variant="h4"
+            component="div"
+            sx={{ paddingLeft: 1, fontSize: '28px', fontWeight: '600' }}
+          >
+            2024
           </Typography>
         </Toolbar>
       </AppBar>
-      <Stack direction="row" justifyContent="center" marginTop={2}>
+      <Box position="fixed" height="100vh" zIndex={-1}>
+        <video height="100%" autoPlay muted loop>
+          <source src="/video/test.mp4" type="video/mp4" />
+        </video>
+      </Box>
+      <Stack
+        direction="row"
+        justifyContent="center"
+        paddingTop={2}
+        height="calc(100vh - 64px)"
+        sx={{ backgroundColor: '#f0f0f0dd' }}
+      >
         <FullCalendarBox width="60vw">
           <FullCalendar
             ref={ref}
@@ -80,7 +101,7 @@ export const App = () => {
             }}
           />
         </FullCalendarBox>
-        <AutoScroll>
+        <AutoScroll key={currentDate}>
           <Events items={currentHolydays} shortDate={shortDate as string} />
           <Names items={currentNames} />
         </AutoScroll>

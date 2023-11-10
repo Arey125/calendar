@@ -23,13 +23,8 @@ export const AutoScroll = ({ children }: TProps) => {
       tension: 1,
     },
     onChange: ({ value }) => {
-      if (!isStoppedRef.current) {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-        targetElement.current?.scrollTo(0, value.y);
-      }
-    },
-    onRest: () => {
-      console.log('rest');
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      targetElement.current?.scrollTo({ top: value.y });
     },
   }));
 
@@ -46,12 +41,12 @@ export const AutoScroll = ({ children }: TProps) => {
             to: { y: containerHeight },
             loop: { reverse: true },
           }),
-        2000,
+        1000,
       );
       return () => clearTimeout(timeout);
     }
     api.stop();
-    const timeout = setTimeout(() => setStopped(false), 2000);
+    const timeout = setTimeout(() => setStopped(false), 1000);
     return () => clearTimeout(timeout);
   }, [api, containerHeight, isStopped, scrollY]);
 
@@ -63,6 +58,8 @@ export const AutoScroll = ({ children }: TProps) => {
       height="calc(100vh - 100px)"
       overflow="auto"
       onWheel={handleWheel}
+      onTouchStart={handleWheel}
+      onClick={handleWheel}
       ref={targetElement}
     >
       {children}
