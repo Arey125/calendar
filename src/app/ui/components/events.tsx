@@ -8,6 +8,7 @@ type Item = {
   title: string;
   description: string;
   image: string;
+  color: string;
 };
 
 type TProps = {
@@ -28,9 +29,9 @@ export const Events = ({ items, shortDate }: TProps) => {
           <Card
             variant="elevation"
             onClick={() => setCurrentEvent(item)}
-            sx={{ backgroundColor: '#fff8' }}
+            sx={{ backgroundColor: item.color + '88' }}
           >
-            <Box m={3} my={2} sx={{ opacity: 1.5 }}>
+            <Box m={3} my={2}>
               <h2>{item.title}</h2>
               <div>{item.category}</div>
             </Box>

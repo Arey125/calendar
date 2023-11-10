@@ -1,6 +1,19 @@
 import { useEffect, useState, useMemo } from 'react';
 
-import { getValuesFromCsv, HolydayItem, NamesItem } from 'shared/config';
+import { getValuesFromCsv } from 'shared/config';
+
+export type HolydayItem = {
+  date: string;
+  category: string;
+  title: string;
+  description: string;
+  image: string;
+};
+
+export type NamesItem = {
+  date: string;
+  names: string;
+};
 
 type TypeItem = {
   id: string;
@@ -16,16 +29,35 @@ type CategoryItem = {
   video: string;
 };
 
+type Holyday = HolydayItem & {
+  type: string;
+  color: string;
+};
+
 export const useData = (currentDate: string | null) => {
-  const [holydays, setHolydays] = useState<HolydayItem[]>([]);
+  const [rawHolydays, setRawHolydays] = useState<HolydayItem[]>([]);
   const [names, setNames] = useState<NamesItem[]>([]);
   const [types, setTypes] = useState<TypeItem[]>([]);
   const [weekends, setWeekends] = useState<string[]>([]);
   const [categories, setCategories] = useState<CategoryItem[]>([]);
 
+  const holydays = useMemo<Holyday[]>(() => {
+    if (!rawHolydays.length || !types.length) {
+      return [];
+    }
+    return rawHolydays.map((item) => {
+      const type = types.find(({ name }) => name === item.category);
+      return {
+        ...item,
+        type: type?.id ?? '',
+        color: type?.color ?? '#ffffff',
+      };
+    });
+  }, [rawHolydays, types]);
+
   useEffect(() => {
     void (async () => {
-      setHolydays(
+      setRawHolydays(
         (await getValuesFromCsv('/holyday.csv')).map(
           ([date, category, title, description, image]) => ({
             date,
@@ -77,6 +109,7 @@ export const useData = (currentDate: string | null) => {
     () => holydays.filter((item) => item.date === localeDate),
     [localeDate, holydays],
   );
+  console.log(currentHolydays);
 
   const currentNames = useMemo(() => {
     const item = names.find(({ date }) => date === localeDate);
