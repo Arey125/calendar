@@ -32,6 +32,7 @@ type CategoryItem = {
 type Holyday = HolydayItem & {
   type: string;
   color: string;
+  gif: string;
 };
 
 export const useData = (currentDate: string | null) => {
@@ -47,13 +48,31 @@ export const useData = (currentDate: string | null) => {
     }
     return rawHolydays.map((item) => {
       const type = types.find(({ name }) => name === item.category);
+      const [day, month, year] = item.date.split('.');
+      const date = `${year}-${month}-${day}`;
       return {
         ...item,
         type: type?.id ?? '',
         color: type?.color ?? '#ffffff',
+        gif: type?.gif ?? '',
+        date,
       };
     });
   }, [rawHolydays, types]);
+
+  const events = useMemo(() => {
+    const eventObject: Record<string, Holyday> = {};
+    holydays.forEach((item) => {
+      if (eventObject[item.date]) {
+        return;
+      }
+      if (item.gif.length < 2) {
+        return;
+      }
+      eventObject[item.date] = item;
+    });
+    return Object.values(eventObject);
+  }, [holydays]);
 
   useEffect(() => {
     void (async () => {
@@ -69,10 +88,14 @@ export const useData = (currentDate: string | null) => {
         ),
       );
       setNames(
-        (await getValuesFromCsv('/names.csv')).map(([date, nameValues]) => ({
-          date,
-          names: nameValues,
-        })),
+        (await getValuesFromCsv('/names.csv')).map(([rawDate, nameValues]) => {
+          const [day, month, year] = rawDate.split('.');
+          const date = `${year}-${month}-${day}`;
+          return {
+            date,
+            names: nameValues,
+          };
+        }),
       );
       setTypes(
         (await getValuesFromCsv('/types.csv')).map(([id, name, gif, color]) => ({
@@ -98,18 +121,13 @@ export const useData = (currentDate: string | null) => {
     if (!currentDate) {
       return null;
     }
-    return new Date(Date.parse(currentDate)).toLocaleDateString('ru', {
-      day: 'numeric',
-      month: 'numeric',
-      year: 'numeric',
-    });
+    return currentDate;
   }, [currentDate]);
 
   const currentHolydays = useMemo(
     () => holydays.filter((item) => item.date === localeDate),
     [localeDate, holydays],
   );
-  console.log(currentHolydays);
 
   const currentNames = useMemo(() => {
     const item = names.find(({ date }) => date === localeDate);
@@ -125,5 +143,7 @@ export const useData = (currentDate: string | null) => {
     types,
     weekends,
     categories,
+    holydays,
+    events,
   };
 };

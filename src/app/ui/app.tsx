@@ -32,7 +32,7 @@ export const App = () => {
 
   const [currentDate, setCurrentDate] = useState<string | null>(null);
 
-  const { currentHolydays, currentNames } = useData(currentDate);
+  const { currentHolydays, currentNames, events } = useData(currentDate);
 
   const shortDate = useMemo(() => {
     if (!currentDate) {
@@ -99,6 +99,15 @@ export const App = () => {
             buttonText={{
               today: 'Сегодня',
             }}
+            events={events
+              .filter(({ gif }) => gif.length > 1)
+              .map((item) => ({
+                image: item.gif,
+                date: item.date,
+              }))}
+            eventBackgroundColor="transparent"
+            eventBorderColor="transparent"
+            eventContent={(info) => <img src={info.event.extendedProps.image} alt="" width="30%" />}
           />
         </FullCalendarBox>
         <AutoScroll key={currentDate}>
