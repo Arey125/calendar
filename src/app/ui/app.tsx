@@ -32,7 +32,7 @@ export const App = () => {
 
   const [currentDate, setCurrentDate] = useState<string | null>(null);
 
-  const { currentHolydays, currentNames, events } = useData(currentDate);
+  const { currentHolydays, currentNames, events, weekends } = useData(currentDate);
 
   const shortDate = useMemo(() => {
     if (!currentDate) {
@@ -79,7 +79,7 @@ export const App = () => {
       </AppBar>
       <Box position="fixed" height="100vh" zIndex={-1}>
         <video height="100%" autoPlay muted loop>
-          <source src="/video/test.mp4" type="video/mp4" />
+          <source src="./video/test.mp4" type="video/mp4" />
         </video>
       </Box>
       <Stack
@@ -108,6 +108,12 @@ export const App = () => {
             eventBackgroundColor="transparent"
             eventBorderColor="transparent"
             eventContent={(info) => <img src={info.event.extendedProps.image} alt="" width="30%" />}
+            dayCellClassNames={({ date }) =>
+              weekends.some((value) => Math.abs(Number(date) - value) < 5 * 60 * 60 * 1000)
+                ? 'bg-red'
+                : ''
+            }
+            firstDay={1}
           />
         </FullCalendarBox>
         <AutoScroll key={currentDate}>

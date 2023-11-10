@@ -39,7 +39,7 @@ export const useData = (currentDate: string | null) => {
   const [rawHolydays, setRawHolydays] = useState<HolydayItem[]>([]);
   const [names, setNames] = useState<NamesItem[]>([]);
   const [types, setTypes] = useState<TypeItem[]>([]);
-  const [weekends, setWeekends] = useState<string[]>([]);
+  const [weekends, setWeekends] = useState<number[]>([]);
   const [categories, setCategories] = useState<CategoryItem[]>([]);
 
   const holydays = useMemo<Holyday[]>(() => {
@@ -77,7 +77,7 @@ export const useData = (currentDate: string | null) => {
   useEffect(() => {
     void (async () => {
       setRawHolydays(
-        (await getValuesFromCsv('/holyday.csv')).map(
+        (await getValuesFromCsv('./holyday.csv')).map(
           ([date, category, title, description, image]) => ({
             date,
             category,
@@ -88,7 +88,7 @@ export const useData = (currentDate: string | null) => {
         ),
       );
       setNames(
-        (await getValuesFromCsv('/names.csv')).map(([rawDate, nameValues]) => {
+        (await getValuesFromCsv('./names.csv')).map(([rawDate, nameValues]) => {
           const [day, month, year] = rawDate.split('.');
           const date = `${year}-${month}-${day}`;
           return {
@@ -98,16 +98,22 @@ export const useData = (currentDate: string | null) => {
         }),
       );
       setTypes(
-        (await getValuesFromCsv('/types.csv')).map(([id, name, gif, color]) => ({
+        (await getValuesFromCsv('./types.csv')).map(([id, name, gif, color]) => ({
           id,
           name,
           gif,
           color,
         })),
       );
-      setWeekends((await getValuesFromCsv('/weekends.csv')).map(([value]) => value));
+      setWeekends(
+        (await getValuesFromCsv('./weekends.csv')).map(([value]) => {
+          const [day, month, year] = value.split('.');
+          const date = Date.parse(`${year}-${month}-${day}`);
+          return date;
+        }),
+      );
       setCategories(
-        (await getValuesFromCsv('/category.csv')).map(([id, name, typeIds, video]) => ({
+        (await getValuesFromCsv('./category.csv')).map(([id, name, typeIds, video]) => ({
           id,
           name,
           typeIds: typeIds?.split(','),

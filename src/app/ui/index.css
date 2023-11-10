@@ -18,3 +18,7 @@
 ::-webkit-scrollbar-thumb {
     background: #FF0000;
 }
+
+.bg-red {
+  background: #FF000020;
+}
