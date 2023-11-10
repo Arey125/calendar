@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 
 import { getValuesFromCsv, HolydayItem, NamesItem } from 'shared/config';
 
@@ -16,7 +16,7 @@ type CategoryItem = {
   video: string;
 };
 
-export const useData = () => {
+export const useData = (currentDate: string | null) => {
   const [holydays, setHolydays] = useState<HolydayItem[]>([]);
   const [names, setNames] = useState<NamesItem[]>([]);
   const [types, setTypes] = useState<TypeItem[]>([]);
@@ -62,9 +62,33 @@ export const useData = () => {
     })();
   }, []);
 
+  const localeDate = useMemo(() => {
+    if (!currentDate) {
+      return null;
+    }
+    return new Date(Date.parse(currentDate)).toLocaleDateString('ru', {
+      day: 'numeric',
+      month: 'numeric',
+      year: 'numeric',
+    });
+  }, [currentDate]);
+
+  const currentHolydays = useMemo(
+    () => holydays.filter((item) => item.date === localeDate),
+    [localeDate, holydays],
+  );
+
+  const currentNames = useMemo(() => {
+    const item = names.find(({ date }) => date === localeDate);
+    if (!item) {
+      return [];
+    }
+    return item.names.split(', ');
+  }, [localeDate, names]);
+
   return {
-    holydays,
-    names,
+    currentHolydays,
+    currentNames,
     types,
     weekends,
     categories,

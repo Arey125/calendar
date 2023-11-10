@@ -15,8 +15,8 @@ import { useLayoutEffect, useMemo, useRef, useState } from 'react';
 
 import { theme as appTheme } from 'shared/config';
 import { useData } from 'shared/model';
-import { Events } from './events';
-import { Names } from './names';
+import { AutoScroll } from 'shared/ui';
+import { Events, Names } from './components';
 
 const FullCalendarBox = styled(Box)(({ theme }) => ({
   '& button': {
@@ -28,19 +28,9 @@ const FullCalendarBox = styled(Box)(({ theme }) => ({
 export const App = () => {
   const ref = useRef<FullCalendar>(null);
 
-  const { holydays, names } = useData();
-
   const [currentDate, setCurrentDate] = useState<string | null>(null);
-  const localeDate = useMemo(() => {
-    if (!currentDate) {
-      return null;
-    }
-    return new Date(Date.parse(currentDate)).toLocaleDateString('ru', {
-      day: 'numeric',
-      month: 'numeric',
-      year: 'numeric',
-    });
-  }, [currentDate]);
+
+  const { currentHolydays, currentNames } = useData(currentDate);
 
   const shortDate = useMemo(() => {
     if (!currentDate) {
@@ -67,19 +57,6 @@ export const App = () => {
     }
   }, []);
 
-  const currentHolydays = useMemo(
-    () => holydays.filter((item) => item.date === localeDate),
-    [localeDate, holydays],
-  );
-
-  const currentNames = useMemo(() => {
-    const item = names.find(({ date }) => date === localeDate);
-    if (!item) {
-      return [];
-    }
-    return item.names.split(', ');
-  }, [localeDate, names]);
-
   return (
     <ThemeProvider theme={appTheme}>
       <CssBaseline />
@@ -103,10 +80,10 @@ export const App = () => {
             }}
           />
         </FullCalendarBox>
-        <Stack paddingTop={8} p={2} width="30vw" height="calc(100vh - 100px)" overflow="auto">
+        <AutoScroll>
           <Events items={currentHolydays} shortDate={shortDate as string} />
           <Names items={currentNames} />
-        </Stack>
+        </AutoScroll>
       </Stack>
     </ThemeProvider>
   );
