@@ -20,12 +20,12 @@
     "paths": {
       "*": ["./src/*"]
     },
-    "typeRoots": ["typings/**/*.d.ts", "node_modules/@types"],
+    "typeRoots": ["src/**/*.d.ts", "node_modules/@types"],
     "types": ["node", "jest", "@testing-library/jest-dom"]
   },
   "include": [
     "src/**/*",
-    "src/app/types/global.d.ts",
+    "src/global.d.ts",
     "./.openapi/openapi-config.ts",
     "typings/**/*.d.ts",
     "./node_modules/@types",
