@@ -5,7 +5,7 @@ type TProps = {
 };
 
 export const Names = ({ items }: TProps) => (
-  <Stack spacing={2} paddingBottom={3} px={2}>
+  <>
     <h2>Именины в этот день</h2>
     {items.map((item) => (
       <Paper>
@@ -14,5 +14,5 @@ export const Names = ({ items }: TProps) => (
         </Stack>
       </Paper>
     ))}
-  </Stack>
+  </>
 );
