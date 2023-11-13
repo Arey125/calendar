@@ -94,7 +94,7 @@ export const App = () => {
         justifyContent="center"
       >
         {categories[currentCategory] !== undefined ? (
-          <video height="100%" autoPlay muted loop>
+          <video height="100%" autoPlay muted loop key={currentCategory}>
             <source src={categories[currentCategory].video} type="video/mp4" />
           </video>
         ) : null}
