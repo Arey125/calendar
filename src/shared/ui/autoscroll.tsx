@@ -1,13 +1,6 @@
 import { Stack } from '@mui/material';
 import { useSpring } from '@react-spring/web';
-import {
-  ReactNode,
-  useRef,
-  WheelEventHandler,
-  useCallback,
-  useLayoutEffect,
-  useState,
-} from 'react';
+import { ReactNode, useRef, useCallback, useLayoutEffect, useState } from 'react';
 
 type TProps = {
   children: ReactNode;
@@ -26,7 +19,7 @@ export const AutoScroll = ({ children }: TProps) => {
     from: { y: reversed ? containerHeight : scrollY },
     to: { y: reversed ? scrollY : containerHeight },
     config: {
-      duration: (containerHeight - scrollY) * 20,
+      duration: (containerHeight - scrollY) * 40,
     },
     reset: !isStopped,
     pause: isStopped,
@@ -41,7 +34,7 @@ export const AutoScroll = ({ children }: TProps) => {
     },
   });
 
-  const handleWheel = useCallback<WheelEventHandler<HTMLDivElement>>(() => {
+  const pauseAnimation = useCallback(() => {
     setStopped(true);
     setReversed(false);
   }, []);
@@ -66,9 +59,11 @@ export const AutoScroll = ({ children }: TProps) => {
       paddingTop={8}
       p={2}
       width="30vw"
-      height="calc(100vh - 100px)"
+      height="100%"
       overflow="auto"
-      onWheel={handleWheel}
+      onWheel={pauseAnimation}
+      onTouchStart={pauseAnimation}
+      onClick={pauseAnimation}
       ref={targetElement}
     >
       {children}

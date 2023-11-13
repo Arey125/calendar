@@ -22,7 +22,7 @@ type TypeItem = {
   color: string;
 };
 
-type CategoryItem = {
+export type CategoryItem = {
   id: string;
   name: string;
   typeIds: string[];
@@ -41,24 +41,27 @@ export const useData = (currentDate: string | null) => {
   const [types, setTypes] = useState<TypeItem[]>([]);
   const [weekends, setWeekends] = useState<number[]>([]);
   const [categories, setCategories] = useState<CategoryItem[]>([]);
+  const [currentCategory, setCurrentCategory] = useState(0);
 
   const holydays = useMemo<Holyday[]>(() => {
     if (!rawHolydays.length || !types.length) {
       return [];
     }
-    return rawHolydays.map((item) => {
-      const type = types.find(({ name }) => name === item.category);
-      const [day, month, year] = item.date.split('.');
-      const date = `${year}-${month}-${day}`;
-      return {
-        ...item,
-        type: type?.id ?? '',
-        color: type?.color ?? '#ffffff',
-        gif: type?.gif ?? '',
-        date,
-      };
-    });
-  }, [rawHolydays, types]);
+    return rawHolydays
+      .map((item) => {
+        const type = types.find(({ name }) => name === item.category);
+        const [day, month, year] = item.date.split('.');
+        const date = `${year}-${month}-${day}`;
+        return {
+          ...item,
+          type: type?.id ?? '',
+          color: type?.color ?? '#ffffff',
+          gif: type?.gif ?? '',
+          date,
+        };
+      })
+      .filter((item) => categories[currentCategory]?.typeIds.includes(item.type));
+  }, [rawHolydays, types, currentCategory, categories]);
 
   const events = useMemo(() => {
     const eventObject: Record<string, Holyday[]> = {};
@@ -122,7 +125,7 @@ export const useData = (currentDate: string | null) => {
         (await getValuesFromCsv('./category.csv')).map(([id, name, typeIds, video]) => ({
           id,
           name,
-          typeIds: typeIds?.split(','),
+          typeIds: typeIds?.split(',') ?? [],
           video,
         })),
       );
@@ -157,5 +160,7 @@ export const useData = (currentDate: string | null) => {
     categories,
     holydays,
     events,
+    currentCategory,
+    setCurrentCategory,
   };
 };

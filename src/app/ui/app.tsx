@@ -17,7 +17,7 @@ import { theme as appTheme } from 'shared/config';
 import { useData } from 'shared/model';
 import { AutoScroll } from 'shared/ui';
 import { Icon } from './assets';
-import { Events, Names } from './components';
+import { Events, Names, CategorySelect } from './components';
 import './index.css';
 
 const FullCalendarBox = styled(Box)(({ theme }) => ({
@@ -32,7 +32,15 @@ export const App = () => {
 
   const [currentDate, setCurrentDate] = useState<string | null>(null);
 
-  const { currentHolydays, currentNames, events, weekends } = useData(currentDate);
+  const {
+    currentHolydays,
+    currentNames,
+    events,
+    weekends,
+    categories,
+    currentCategory,
+    setCurrentCategory,
+  } = useData(currentDate);
 
   const shortDate = useMemo(() => {
     if (!currentDate) {
@@ -125,10 +133,18 @@ export const App = () => {
             firstDay={1}
           />
         </FullCalendarBox>
-        <AutoScroll key={currentDate}>
-          <Events items={currentHolydays} shortDate={shortDate as string} />
-          <Names items={currentNames} />
-        </AutoScroll>
+        <Stack>
+          <CategorySelect
+            items={categories}
+            value={currentCategory}
+            setValue={setCurrentCategory}
+          />
+          <h2>Праздники {shortDate}</h2>
+          <AutoScroll key={currentDate}>
+            <Events items={currentHolydays} shortDate={shortDate as string} />
+            <Names items={currentNames} />
+          </AutoScroll>
+        </Stack>
       </Stack>
     </ThemeProvider>
   );
