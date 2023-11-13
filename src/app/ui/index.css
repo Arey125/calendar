@@ -22,3 +22,7 @@
 .bg-red {
   background: #FF000020;
 }
+
+.fc-event {
+  pointer-events: none;
+}

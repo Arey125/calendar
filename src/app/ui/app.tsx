@@ -77,11 +77,18 @@ export const App = () => {
           </Typography>
         </Toolbar>
       </AppBar>
-      <Box position="fixed" height="100vh" zIndex={-1}>
+      <Stack
+        position="fixed"
+        height="100vh"
+        width="100vw"
+        zIndex={-1}
+        alignItems="center"
+        justifyContent="center"
+      >
         <video height="100%" autoPlay muted loop>
           <source src="./video/test.mp4" type="video/mp4" />
         </video>
-      </Box>
+      </Stack>
       <Stack
         direction="row"
         justifyContent="center"
@@ -99,15 +106,17 @@ export const App = () => {
             buttonText={{
               today: 'Сегодня',
             }}
-            events={events
-              .filter(({ gif }) => gif.length > 1)
-              .map((item) => ({
-                image: item.gif,
-                date: item.date,
-              }))}
+            events={events.map(({ date, items }) => ({
+              images: items.map(({ gif }) => gif),
+              date,
+            }))}
             eventBackgroundColor="transparent"
             eventBorderColor="transparent"
-            eventContent={(info) => <img src={info.event.extendedProps.image} alt="" width="30%" />}
+            eventContent={(info) =>
+              (info.event.extendedProps.images as string[]).map((src) => (
+                <img src={src} alt="" width="30%" />
+              ))
+            }
             dayCellClassNames={({ date }) =>
               weekends.some((value) => Math.abs(Number(date) - value) < 5 * 60 * 60 * 1000)
                 ? 'bg-red'

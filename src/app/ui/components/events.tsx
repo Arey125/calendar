@@ -24,7 +24,7 @@ export const Events = ({ items, shortDate }: TProps) => {
     <>
       <Modal currentEvent={currentEvent} close={close} shortDate={shortDate} />
       <Stack spacing={2} paddingBottom={3} borderBottom="2px solid #888">
-        <h2>Праздники в этот день</h2>
+        <h2>Праздники {shortDate}</h2>
         {items.map((item) => (
           <Card
             variant="elevation"

@@ -61,17 +61,23 @@ export const useData = (currentDate: string | null) => {
   }, [rawHolydays, types]);
 
   const events = useMemo(() => {
-    const eventObject: Record<string, Holyday> = {};
+    const eventObject: Record<string, Holyday[]> = {};
     holydays.forEach((item) => {
-      if (eventObject[item.date]) {
+      if (!eventObject[item.date]) {
+        eventObject[item.date] = [];
+      }
+      if (!item.gif.length) {
         return;
       }
-      if (item.gif.length < 2) {
+      if (eventObject[item.date].findIndex(({ gif }) => gif === item.gif) !== -1) {
         return;
       }
-      eventObject[item.date] = item;
+      eventObject[item.date].push(item);
     });
-    return Object.values(eventObject);
+    return Object.entries(eventObject).map(([date, items]) => ({
+      date,
+      items: items.sort((a, b) => Number(b.type) - Number(a.type)).slice(0, 3),
+    }));
   }, [holydays]);
 
   useEffect(() => {
