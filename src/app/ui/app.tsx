@@ -93,9 +93,11 @@ export const App = () => {
         alignItems="center"
         justifyContent="center"
       >
-        <video height="100%" autoPlay muted loop>
-          <source src="./video/test.mp4" type="video/mp4" />
-        </video>
+        {categories[currentCategory] !== undefined ? (
+          <video height="100%" autoPlay muted loop>
+            <source src={categories[currentCategory].video} type="video/mp4" />
+          </video>
+        ) : null}
       </Stack>
       <Stack
         direction="row"
