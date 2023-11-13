@@ -50,7 +50,7 @@ export const AutoScroll = ({ children }: TProps) => {
       const newScrollY = targetElement.current?.scrollTop ?? 0;
       setScrollY(newScrollY === containerHeight ? 0 : newScrollY);
       setReversed(newScrollY === containerHeight);
-    }, 1000);
+    }, 5000);
     return () => clearTimeout(timeout);
   }, [containerHeight, isStopped]);
 
