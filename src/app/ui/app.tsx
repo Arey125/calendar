@@ -17,7 +17,7 @@ import { theme as appTheme } from 'shared/config';
 import { useData } from 'shared/model';
 import { AutoScroll } from 'shared/ui';
 import { Icon } from './assets';
-import { Events, Names } from './components';
+import { Events, Names, CategorySelect, CurrentTime } from './components';
 import './index.css';
 
 const FullCalendarBox = styled(Box)(({ theme }) => ({
@@ -32,7 +32,15 @@ export const App = () => {
 
   const [currentDate, setCurrentDate] = useState<string | null>(null);
 
-  const { currentHolydays, currentNames } = useData(currentDate);
+  const {
+    currentHolydays,
+    currentNames,
+    events,
+    weekends,
+    categories,
+    currentCategory,
+    setCurrentCategory,
+  } = useData(currentDate);
 
   const shortDate = useMemo(() => {
     if (!currentDate) {
@@ -64,24 +72,38 @@ export const App = () => {
       <CssBaseline />
       <AppBar position="static">
         <Toolbar>
-          <img src={Icon} alt="" height="44px" />
-          <Typography variant="h4" component="div" sx={{ paddingLeft: 4, fontSize: '28px' }}>
-            Календарь
-          </Typography>
-          <Typography
-            variant="h4"
-            component="div"
-            sx={{ paddingLeft: 1, fontSize: '28px', fontWeight: '600' }}
-          >
-            2024
-          </Typography>
+          <Stack direction="row" alignItems="center" justifyContent="space-between" width="100%">
+            <Stack direction="row" alignItems="center">
+              <img src={Icon} alt="" height="44px" />
+              <Typography variant="h4" component="div" sx={{ paddingLeft: 4, fontSize: '28px' }}>
+                Календарь
+              </Typography>
+              <Typography
+                variant="h4"
+                component="div"
+                sx={{ paddingLeft: 1, fontSize: '28px', fontWeight: '600' }}
+              >
+                2024
+              </Typography>
+            </Stack>
+            <CurrentTime />
+          </Stack>
         </Toolbar>
       </AppBar>
-      <Box position="fixed" height="100vh" zIndex={-1}>
-        <video height="100%" autoPlay muted loop>
-          <source src="/video/test.mp4" type="video/mp4" />
-        </video>
-      </Box>
+      <Stack
+        position="fixed"
+        height="100vh"
+        width="100vw"
+        zIndex={-1}
+        alignItems="center"
+        justifyContent="center"
+      >
+        {categories[currentCategory] !== undefined ? (
+          <video height="100%" autoPlay muted loop key={currentCategory}>
+            <source src={categories[currentCategory].video} type="video/mp4" />
+          </video>
+        ) : null}
+      </Stack>
       <Stack
         direction="row"
         justifyContent="center"
@@ -99,12 +121,39 @@ export const App = () => {
             buttonText={{
               today: 'Сегодня',
             }}
+            events={events.map(({ date, items }) => ({
+              images: items.map(({ gif }) => gif),
+              date,
+            }))}
+            eventBackgroundColor="transparent"
+            eventBorderColor="transparent"
+            eventContent={(info) =>
+              (info.event.extendedProps.images as string[]).map((src) => (
+                <img src={src} alt="" width="30%" />
+              ))
+            }
+            dayCellClassNames={({ date }) =>
+              weekends.some((value) => Math.abs(Number(date) - value) < 5 * 60 * 60 * 1000)
+                ? 'bg-red'
+                : ''
+            }
+            firstDay={1}
           />
         </FullCalendarBox>
-        <AutoScroll key={currentDate}>
-          <Events items={currentHolydays} shortDate={shortDate as string} />
-          <Names items={currentNames} />
-        </AutoScroll>
+        <Stack>
+          <Stack paddingX={2}>
+            <CategorySelect
+              items={categories}
+              value={currentCategory}
+              setValue={setCurrentCategory}
+            />
+            <h2>Праздники {shortDate}</h2>
+          </Stack>
+          <AutoScroll key={currentDate}>
+            <Events items={currentHolydays} shortDate={shortDate as string} />
+            <Names items={currentNames} />
+          </AutoScroll>
+        </Stack>
       </Stack>
     </ThemeProvider>
   );

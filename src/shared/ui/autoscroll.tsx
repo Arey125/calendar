@@ -1,6 +1,6 @@
 import { Stack } from '@mui/material';
 import { useSpring } from '@react-spring/web';
-import { ReactNode, useRef, UIEventHandler, useCallback, useLayoutEffect, useState } from 'react';
+import { ReactNode, useRef, useCallback, useLayoutEffect, useState } from 'react';
 
 type TProps = {
   children: ReactNode;
@@ -8,58 +8,62 @@ type TProps = {
 
 export const AutoScroll = ({ children }: TProps) => {
   const targetElement = useRef<HTMLDivElement>(null!);
-  const scrollY = targetElement.current?.scrollTop ?? 0;
+  const [scrollY, setScrollY] = useState(targetElement.current?.scrollTop ?? 0);
   const containerHeight = targetElement.current
     ? targetElement.current.scrollHeight - targetElement.current.offsetHeight
     : 0;
   const [isStopped, setStopped] = useState(false);
-  const isStoppedRef = useRef(false);
-  isStoppedRef.current = isStopped;
+  const [reversed, setReversed] = useState(false);
 
-  const [, api] = useSpring(() => ({
-    from: { y: scrollY },
+  useSpring({
+    from: { y: reversed ? containerHeight : scrollY },
+    to: { y: reversed ? scrollY : containerHeight },
     config: {
-      friction: 100,
-      tension: 1,
+      duration: containerHeight - scrollY < 2000 ? 2000 : (containerHeight - scrollY) * 40,
     },
+    reset: !isStopped,
+    pause: isStopped,
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     onChange: ({ value }) => {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       targetElement.current?.scrollTo({ top: value.y });
     },
-  }));
+    onRest: () => {
+      setScrollY(0);
+      setReversed(!reversed);
+    },
+  });
 
-  const handleWheel = useCallback<UIEventHandler>(() => {
+  const pauseAnimation = useCallback(() => {
     setStopped(true);
+    setReversed(false);
   }, []);
 
   useLayoutEffect(() => {
     if (!isStopped) {
-      const timeout = setTimeout(
-        () =>
-          api.start({
-            from: { y: scrollY },
-            to: { y: containerHeight },
-            loop: { reverse: true },
-          }),
-        1000,
-      );
-      return () => clearTimeout(timeout);
+      return () => {
+        // no-op
+      };
     }
-    api.stop();
-    const timeout = setTimeout(() => setStopped(false), 1000);
+    const timeout = setTimeout(() => {
+      setStopped(false);
+      const newScrollY = targetElement.current?.scrollTop ?? 0;
+      setScrollY(newScrollY === containerHeight ? 0 : newScrollY);
+      setReversed(newScrollY === containerHeight);
+    }, 5000);
     return () => clearTimeout(timeout);
-  }, [api, containerHeight, isStopped, scrollY]);
+  }, [containerHeight, isStopped]);
 
   return (
     <Stack
       paddingTop={8}
       p={2}
       width="30vw"
-      height="calc(100vh - 100px)"
+      height="100%"
       overflow="auto"
-      onWheel={handleWheel}
-      onTouchStart={handleWheel}
-      onClick={handleWheel}
+      onWheel={pauseAnimation}
+      onTouchStart={pauseAnimation}
+      onClick={pauseAnimation}
       ref={targetElement}
     >
       {children}
