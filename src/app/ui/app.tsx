@@ -17,7 +17,7 @@ import { theme as appTheme } from 'shared/config';
 import { useData } from 'shared/model';
 import { AutoScroll } from 'shared/ui';
 import { Icon } from './assets';
-import { Events, Names, CategorySelect } from './components';
+import { Events, Names, CategorySelect, CurrentTime } from './components';
 import './index.css';
 
 const FullCalendarBox = styled(Box)(({ theme }) => ({
@@ -72,17 +72,22 @@ export const App = () => {
       <CssBaseline />
       <AppBar position="static">
         <Toolbar>
-          <img src={Icon} alt="" height="44px" />
-          <Typography variant="h4" component="div" sx={{ paddingLeft: 4, fontSize: '28px' }}>
-            Календарь
-          </Typography>
-          <Typography
-            variant="h4"
-            component="div"
-            sx={{ paddingLeft: 1, fontSize: '28px', fontWeight: '600' }}
-          >
-            2024
-          </Typography>
+          <Stack direction="row" alignItems="center" justifyContent="space-between" width="100%">
+            <Stack direction="row" alignItems="center">
+              <img src={Icon} alt="" height="44px" />
+              <Typography variant="h4" component="div" sx={{ paddingLeft: 4, fontSize: '28px' }}>
+                Календарь
+              </Typography>
+              <Typography
+                variant="h4"
+                component="div"
+                sx={{ paddingLeft: 1, fontSize: '28px', fontWeight: '600' }}
+              >
+                2024
+              </Typography>
+            </Stack>
+            <CurrentTime />
+          </Stack>
         </Toolbar>
       </AppBar>
       <Stack
