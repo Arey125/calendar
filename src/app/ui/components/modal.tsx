@@ -62,7 +62,7 @@ export const Modal = ({ currentEvent, close, shortDate }: TProps) => {
             />
           </Stack>
           <Typography id="modal-modal-description" sx={{ mt: 2, px: 2 }}>
-            {currentEvent?.description.split('\n').map((item) => (
+            {currentEvent?.description.split('<br>').map((item) => (
               <p>{item}</p>
             ))}
           </Typography>

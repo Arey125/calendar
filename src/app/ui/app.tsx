@@ -136,12 +136,14 @@ export const App = () => {
           />
         </FullCalendarBox>
         <Stack>
-          <CategorySelect
-            items={categories}
-            value={currentCategory}
-            setValue={setCurrentCategory}
-          />
-          <h2>Праздники {shortDate}</h2>
+          <Stack paddingX={2}>
+            <CategorySelect
+              items={categories}
+              value={currentCategory}
+              setValue={setCurrentCategory}
+            />
+            <h2>Праздники {shortDate}</h2>
+          </Stack>
           <AutoScroll key={currentDate}>
             <Events items={currentHolydays} shortDate={shortDate as string} />
             <Names items={currentNames} />

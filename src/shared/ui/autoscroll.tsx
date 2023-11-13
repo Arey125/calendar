@@ -19,7 +19,7 @@ export const AutoScroll = ({ children }: TProps) => {
     from: { y: reversed ? containerHeight : scrollY },
     to: { y: reversed ? scrollY : containerHeight },
     config: {
-      duration: (containerHeight - scrollY) * 40,
+      duration: containerHeight - scrollY < 2000 ? 2000 : (containerHeight - scrollY) * 40,
     },
     reset: !isStopped,
     pause: isStopped,
