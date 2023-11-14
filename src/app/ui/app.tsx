@@ -20,6 +20,8 @@ import { Icon } from './assets';
 import { Events, Names, CategorySelect, CurrentTime } from './components';
 import './index.css';
 
+const isSameDate = (date1: number, date2: number) => Math.abs(date1 - date2) < 5 * 60 * 60 * 1000;
+
 const FullCalendarBox = styled(Box)(({ theme }) => ({
   '& button': {
     backgroundColor: `${theme.palette.primary.main} !important`,
@@ -41,6 +43,15 @@ export const App = () => {
     currentCategory,
     setCurrentCategory,
   } = useData(currentDate);
+
+  const getDayColor = (date: Date) => {
+    const currentDateTimestamp = Date.parse(currentDate ?? '');
+    if (isSameDate(Number(date), currentDateTimestamp)) {
+      return 'bg-yellow';
+    }
+
+    return weekends.some((value) => isSameDate(value, Number(date))) ? 'bg-red' : '';
+  };
 
   const shortDate = useMemo(() => {
     if (!currentDate) {
@@ -132,11 +143,7 @@ export const App = () => {
                 <img src={src} alt="" width="30%" />
               ))
             }
-            dayCellClassNames={({ date }) =>
-              weekends.some((value) => Math.abs(Number(date) - value) < 5 * 60 * 60 * 1000)
-                ? 'bg-red'
-                : ''
-            }
+            dayCellClassNames={({ date }) => getDayColor(date)}
             firstDay={1}
           />
         </FullCalendarBox>

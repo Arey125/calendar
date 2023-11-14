@@ -8,18 +8,18 @@ type TProps = {
 
 export const AutoScroll = ({ children }: TProps) => {
   const targetElement = useRef<HTMLDivElement>(null!);
-  const [scrollY, setScrollY] = useState(targetElement.current?.scrollTop ?? 0);
+  const [scrollY, setScrollY] = useState(0);
   const containerHeight = targetElement.current
     ? targetElement.current.scrollHeight - targetElement.current.offsetHeight
     : 0;
   const [isStopped, setStopped] = useState(false);
-  const [reversed, setReversed] = useState(false);
+  const [reversed, setReversed] = useState(true);
 
   useSpring({
     from: { y: reversed ? containerHeight : scrollY },
     to: { y: reversed ? scrollY : containerHeight },
     config: {
-      duration: containerHeight - scrollY < 2000 ? 2000 : (containerHeight - scrollY) * 40,
+      duration: (containerHeight - scrollY) * 80 < 2000 ? 2000 : (containerHeight - scrollY) * 80,
     },
     reset: !isStopped,
     pause: isStopped,
@@ -39,20 +39,30 @@ export const AutoScroll = ({ children }: TProps) => {
     setReversed(false);
   }, []);
 
+  const stopAnimation = useCallback(() => {
+    const timeout = setTimeout(() => {
+      setStopped(false);
+      const newScrollY = targetElement.current?.scrollTop ?? 0;
+      const currentContainerHeight = targetElement.current
+        ? targetElement.current.scrollHeight - targetElement.current.offsetHeight
+        : 0;
+      setScrollY(newScrollY === currentContainerHeight ? 0 : newScrollY);
+      setReversed(newScrollY === currentContainerHeight);
+    }, 5000);
+    return () => clearTimeout(timeout);
+  }, []);
+
   useLayoutEffect(() => {
     if (!isStopped) {
       return () => {
         // no-op
       };
     }
-    const timeout = setTimeout(() => {
-      setStopped(false);
-      const newScrollY = targetElement.current?.scrollTop ?? 0;
-      setScrollY(newScrollY === containerHeight ? 0 : newScrollY);
-      setReversed(newScrollY === containerHeight);
-    }, 5000);
-    return () => clearTimeout(timeout);
-  }, [containerHeight, isStopped]);
+    return stopAnimation();
+  }, [isStopped, stopAnimation]);
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useLayoutEffect(() => stopAnimation(), []);
 
   return (
     <Stack

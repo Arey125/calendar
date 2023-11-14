@@ -79,7 +79,7 @@ export const useData = (currentDate: string | null) => {
     });
     return Object.entries(eventObject).map(([date, items]) => ({
       date,
-      items: items.sort((a, b) => Number(b.type) - Number(a.type)).slice(0, 3),
+      items: items.sort((a, b) => Number(a.type) - Number(b.type)).slice(0, 3),
     }));
   }, [holydays]);
 

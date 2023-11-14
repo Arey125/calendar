@@ -23,6 +23,10 @@
   background: #FF000020;
 }
 
+.bg-yellow {
+  background: #FFFF0020;
+}
+
 .fc-event {
   pointer-events: none;
 }
