@@ -31,6 +31,9 @@ const FullCalendarBox = styled(Box)(({ theme }) => ({
 
 export const App = () => {
   const ref = useRef<FullCalendar>(null);
+  // @ts-ignore
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/dot-notation
+  const backgroundColor = window['backgroundColor'] as string;
 
   const [currentDate, setCurrentDate] = useState<string | null>(null);
 
@@ -120,7 +123,9 @@ export const App = () => {
         justifyContent="center"
         paddingTop={2}
         height="calc(100vh - 64px)"
-        sx={{ backgroundColor: '#f0f0f0dd' }}
+        sx={{
+          backgroundColor,
+        }}
       >
         <FullCalendarBox width="60vw">
           <FullCalendar
