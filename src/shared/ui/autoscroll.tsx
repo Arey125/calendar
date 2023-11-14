@@ -1,5 +1,6 @@
 import { Stack } from '@mui/material';
 import { useSpring } from '@react-spring/web';
+import { throttle } from 'lodash';
 import { ReactNode, useRef, useCallback, useLayoutEffect, useState } from 'react';
 
 type TProps = {
@@ -15,6 +16,14 @@ export const AutoScroll = ({ children }: TProps) => {
   const [isStopped, setStopped] = useState(false);
   const [reversed, setReversed] = useState(true);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const animate = useCallback(
+    throttle((value: number) => {
+      targetElement.current?.scrollTo({ top: value, behavior: 'smooth' });
+    }, 40),
+    [],
+  );
+
   useSpring({
     from: { y: reversed ? containerHeight : scrollY },
     to: { y: reversed ? scrollY : containerHeight },
@@ -25,8 +34,8 @@ export const AutoScroll = ({ children }: TProps) => {
     pause: isStopped,
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     onChange: ({ value }) => {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-      targetElement.current?.scrollTo({ top: value.y });
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-argument
+      animate(value.y);
     },
     onRest: () => {
       setScrollY(0);
