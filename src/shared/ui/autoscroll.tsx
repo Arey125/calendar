@@ -1,30 +1,24 @@
 import { Stack } from '@mui/material';
-import { useSpring } from '@react-spring/web';
-import { throttle } from 'lodash';
-import { ReactNode, useRef, useCallback, useLayoutEffect, useState } from 'react';
+import { useSpring, animated, to } from '@react-spring/web';
+import { ReactNode, useRef, useCallback, useLayoutEffect, useState, useEffect } from 'react';
 
 type TProps = {
   children: ReactNode;
 };
 
 export const AutoScroll = ({ children }: TProps) => {
+  const container = useRef<HTMLDivElement>(null!);
   const targetElement = useRef<HTMLDivElement>(null!);
+
   const [scrollY, setScrollY] = useState(0);
-  const containerHeight = targetElement.current
-    ? targetElement.current.scrollHeight - targetElement.current.offsetHeight
-    : 0;
+  const containerHeight =
+    targetElement.current && container.current
+      ? Math.max(targetElement.current.offsetHeight - container.current.offsetHeight + 16, 0)
+      : 0;
   const [isStopped, setStopped] = useState(false);
   const [reversed, setReversed] = useState(true);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const animate = useCallback(
-    throttle((value: number) => {
-      targetElement.current?.scrollTo({ top: value, behavior: 'smooth' });
-    }, 40),
-    [],
-  );
-
-  useSpring({
+  const { y } = useSpring({
     from: { y: reversed ? containerHeight : scrollY },
     to: { y: reversed ? scrollY : containerHeight },
     config: {
@@ -33,10 +27,6 @@ export const AutoScroll = ({ children }: TProps) => {
     reset: !isStopped,
     pause: isStopped,
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    onChange: ({ value }) => {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-argument
-      animate(value.y);
-    },
     onRest: () => {
       setScrollY(0);
       setReversed(!reversed);
@@ -70,22 +60,34 @@ export const AutoScroll = ({ children }: TProps) => {
     return stopAnimation();
   }, [isStopped, stopAnimation]);
 
+  useEffect(() => {
+    const handleTouchStart = () => {
+      pauseAnimation();
+    };
+    document.addEventListener('touchstart', handleTouchStart);
+    return () => {
+      document.removeEventListener('touchstart', handleTouchStart);
+    };
+  }, [pauseAnimation]);
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useLayoutEffect(() => stopAnimation(), []);
 
   return (
-    <Stack
-      paddingTop={8}
-      p={2}
-      width="30vw"
-      height="100%"
-      overflow="auto"
-      onWheel={pauseAnimation}
-      onTouchStart={pauseAnimation}
-      onClick={pauseAnimation}
-      ref={targetElement}
-    >
-      {children}
+    <Stack width="30vw" height="100%" overflow="clip" ref={container}>
+      <animated.div
+        ref={targetElement}
+        onWheel={pauseAnimation}
+        onTouchStart={pauseAnimation}
+        onTouchMove={pauseAnimation}
+        onClick={pauseAnimation}
+        style={{
+          width: '30vw',
+          transform: to([y], (y_pos) => `translateY(${y_pos - containerHeight}px)`),
+        }}
+      >
+        {children}
+      </animated.div>
     </Stack>
   );
 };
