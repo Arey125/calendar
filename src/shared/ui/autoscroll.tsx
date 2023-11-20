@@ -1,28 +1,47 @@
 import { Stack } from '@mui/material';
 import { useSpring, animated, to } from '@react-spring/web';
-import { ReactNode, useRef, useCallback, useLayoutEffect, useState, useEffect } from 'react';
+import {
+  ReactNode,
+  useRef,
+  useCallback,
+  useLayoutEffect,
+  useState,
+  useEffect,
+  WheelEventHandler,
+  TouchEventHandler,
+} from 'react';
 
 type TProps = {
   children: ReactNode;
 };
 
+const clamp = (value: number, min: number, max: number) => Math.min(Math.max(value, min), max);
+
 export const AutoScroll = ({ children }: TProps) => {
   const container = useRef<HTMLDivElement>(null!);
   const targetElement = useRef<HTMLDivElement>(null!);
+  const [touchPosition, setTouchPosition] = useState<number | null>(null);
 
   const [scrollY, setScrollY] = useState(0);
-  const containerHeight =
-    targetElement.current && container.current
-      ? Math.max(targetElement.current.offsetHeight - container.current.offsetHeight + 16, 0)
-      : 0;
-  const [isStopped, setStopped] = useState(false);
-  const [reversed, setReversed] = useState(true);
+  const containerHeight = useRef(0);
+
+  useLayoutEffect(() => {
+    containerHeight.current =
+      targetElement.current && container.current
+        ? Math.max(targetElement.current.offsetHeight - container.current.offsetHeight + 16, 0)
+        : 0;
+  });
+  const [isStopped, setStopped] = useState(true);
+  const [reversed, setReversed] = useState(false);
 
   const { y } = useSpring({
-    from: { y: reversed ? containerHeight : scrollY },
-    to: { y: reversed ? scrollY : containerHeight },
+    from: { y: reversed ? containerHeight.current : scrollY },
+    to: { y: reversed ? scrollY : containerHeight.current },
     config: {
-      duration: (containerHeight - scrollY) * 80 < 2000 ? 2000 : (containerHeight - scrollY) * 80,
+      duration:
+        (containerHeight.current - scrollY) * 100 < 2000
+          ? 2000
+          : (containerHeight.current - scrollY) * 100,
     },
     reset: !isStopped,
     pause: isStopped,
@@ -34,22 +53,22 @@ export const AutoScroll = ({ children }: TProps) => {
   });
 
   const pauseAnimation = useCallback(() => {
+    if (!isStopped) {
+      setScrollY(y.get());
+    }
     setStopped(true);
     setReversed(false);
-  }, []);
+  }, [y, isStopped]);
 
   const stopAnimation = useCallback(() => {
     const timeout = setTimeout(() => {
       setStopped(false);
-      const newScrollY = targetElement.current?.scrollTop ?? 0;
-      const currentContainerHeight = targetElement.current
-        ? targetElement.current.scrollHeight - targetElement.current.offsetHeight
-        : 0;
-      setScrollY(newScrollY === currentContainerHeight ? 0 : newScrollY);
+      const newScrollY = y.get();
+      const currentContainerHeight = containerHeight.current;
       setReversed(newScrollY === currentContainerHeight);
     }, 5000);
     return () => clearTimeout(timeout);
-  }, []);
+  }, [y]);
 
   useLayoutEffect(() => {
     if (!isStopped) {
@@ -70,20 +89,49 @@ export const AutoScroll = ({ children }: TProps) => {
     };
   }, [pauseAnimation]);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useLayoutEffect(() => stopAnimation(), []);
+  const handleWheel = useCallback<WheelEventHandler>(
+    (event) => {
+      if (event.deltaY !== 0) {
+        pauseAnimation();
+        setScrollY((cur) => clamp(cur + event.deltaY, 0, containerHeight.current));
+      }
+    },
+    [pauseAnimation],
+  );
+
+  const handleTouchStart = useCallback<TouchEventHandler<HTMLDivElement>>(
+    (event) => {
+      pauseAnimation();
+      setTouchPosition(event.touches[0].clientY);
+    },
+    [pauseAnimation],
+  );
+
+  const handleTouchMove = useCallback<TouchEventHandler<HTMLDivElement>>(
+    (event) => {
+      if (touchPosition) {
+        setScrollY((cur) =>
+          clamp(cur - (event.touches[0].clientY - touchPosition), 0, containerHeight.current),
+        );
+        setTouchPosition(event.touches[0].clientY);
+      }
+    },
+    [touchPosition],
+  );
 
   return (
     <Stack width="30vw" height="100%" overflow="clip" ref={container}>
       <animated.div
         ref={targetElement}
-        onWheel={pauseAnimation}
-        onTouchStart={pauseAnimation}
-        onTouchMove={pauseAnimation}
+        onWheel={handleWheel}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
         onClick={pauseAnimation}
         style={{
           width: '30vw',
-          transform: to([y], (y_pos) => `translateY(${y_pos - containerHeight}px)`),
+          transform: isStopped
+            ? `translateY(${-scrollY}px)`
+            : to([y], (y_pos) => `translateY(${-y_pos}px)`),
         }}
       >
         {children}

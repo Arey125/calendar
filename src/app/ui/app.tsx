@@ -122,6 +122,7 @@ export const App = () => {
         direction="row"
         justifyContent="center"
         paddingTop={2}
+        spacing={2}
         height="calc(100vh - 64px)"
         sx={{
           backgroundColor,
